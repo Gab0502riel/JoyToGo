@@ -1,0 +1,334 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: #f8f3f3;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo_full {
+    height: 100px;
+}
+
+.navbar_buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.navbar_buttons button {
+    background-color: #ffac5e;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.navbar_buttons button:hover {
+    background: linear-gradient(135deg, #db7445, #f07759);
+    box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
+}
+
+.logo_full {
+  height: 100px;
+}
+
+.partner {
+    background-color: #ffac5e;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto;
+}
+
+.login_button {
+    background-color: #ffac5e;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.signup_button {
+    background-color: #ffac5e;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+
+}
+
+.signup_button:hover {
+    background-color: #e38f3c;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #db7445, #f07759);
+    box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f6f6ff;
+    overflow-x: hidden;
+}
+
+form input:hover,
+form input:focus {
+  border-color: #ff8f33;
+  box-shadow: 0 0 10px rgb(255, 143, 51);
+  outline: none;
+}
+
+
+.main_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #4A2E19;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.main {
+    flex: 1 0 auto;  
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;           
+    max-width: 400px;     
+    margin: 20px auto;
+    position: relative;
+    z-index: 1;
+}
+
+
+.registration_form .form_group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    color: #4A2E19;
+
+}
+
+.registration_form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.registration_form input[type="text"],
+.registration_form input[type="email"],
+.registration_form input[type="password"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #4A2E19;
+}
+label{
+    margin-top: 20px;
+}
+
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #db7445, #f07759);
+    box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
+}
+
+.login_prompt input[type="submit"] {
+    background-color: #ffac5e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.login_prompt input[type="submit"]:hover {
+    background-color: #e38f3c;
+}
+
+button#signinBtn {
+    background-color: #ffac5e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+button#signinBtn:hover {
+    background-color: #e38f3c;
+    background: linear-gradient(135deg, #db7445, #f07759);
+    box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
+}
+
+.submit_prompt {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4A2E19;
+}
+
+.submit_prompt a {
+    color: #4A2E19;
+
+}
+
+.submit_prompt:hover a {
+    color: #e38f3c;
+}
+
+.footer {
+    flex-shrink: 0;
+    background-color: #110d09da;
+    color: white;
+    padding: 40px 20px 20px;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+.footer_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.footer_section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffb974;
+}
+
+.footer_section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer_section ul li {
+    margin-bottom: 8px;
+}
+
+.footer_section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer_section ul li a:hover {
+    color: #ffc772;
+}
+
+.footer_social a {
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+    transition: transform 0.2s;
+}
+
+.footer_social a:hover {
+    transform: scale(1.2);
+    color: #ffc772;
+}
+
+.footer_bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  color: #4A2E19;
+}
+
+.popup-content h3 {
+  margin-top: 0;
+  color: #ff9100;
+}
+
+.popup-content p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #4A2E19;
+}
+
+.close:hover {
+  color: #ff9100;
+}
