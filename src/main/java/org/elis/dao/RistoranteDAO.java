@@ -1,5 +1,5 @@
 package org.elis.dao;
 
-public class RistoranteDAO {
+public interface RistoranteDao {
 
 }

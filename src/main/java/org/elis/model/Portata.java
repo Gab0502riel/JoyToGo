@@ -1,5 +1,5 @@
 package org.elis.model;
 
-public class Ristoratore {
+public class Portata {
 
 }

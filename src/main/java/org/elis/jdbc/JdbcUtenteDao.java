@@ -1,5 +1,6 @@
 package org.elis.jdbc;
 
+import java.sql.Connection;
 import java.util.List;
 
 import org.elis.dao.UtenteDao;
@@ -32,6 +33,15 @@ public class JdbcUtenteDao implements UtenteDao{
 	public Utente findByEmailPassword(String email, String password) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void insert(Utente utente) throws Exception {
+		try(Connection connection = dataSource.getConnection())
+		{
+			String query = "INSERT INTO utente(nome, cognome, email, password, sesso) VALUES(?, ?, ?, ?, ?)";
+		}
+		
 	}
 	
  // crei il corpo al metodo astratto per la query

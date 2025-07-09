@@ -1,6 +1,10 @@
 package org.elis.jdbc;
 
 import org.elis.dao.DaoFactory;
+import org.elis.dao.OrdineDao;
+import org.elis.dao.PortataDao;
+import org.elis.dao.RistoranteDao;
+import org.elis.dao.UtenteDao;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
@@ -25,9 +29,29 @@ public class JdbcDaoFactory extends DaoFactory{
 			dataSource.setUser("root");
 			dataSource.setPassword("root");
 			dataSource.setServerName("localhost");
-			dataSource.setDatabaseName("joytogoDB");
+			dataSource.setDatabaseName("joytogodb");
 		}
 		return dataSource;
+	}
+
+	@Override
+	public UtenteDao getUtenteDao() {
+		return new JdbcUtenteDao(getDataSource());
+	}
+
+	@Override
+	public RistoranteDao getRistoranteDao() {
+		return new JdbcRistoranteDao(getDataSource());
+	}
+
+	@Override
+	public OrdineDao getOrdineDao() {
+		return new JdbcOrdineDao(getDataSource());
+	}
+
+	@Override
+	public PortataDao getPortataDao() {
+		return new JdbcPortataDao(getDataSource());
 	}
 	
 }
