@@ -75,7 +75,7 @@
                 <input type="text" id="city" name="city" required placeholder="Inserisci la tua città">
             </div>
             
-            <button type="submit">Registrati come Partner</button>
+                <input type="submitBtn" value="Registrati come Partner">
             
              <div>
                 <p class="login_prompt">Hai già un account partner? 

@@ -59,7 +59,8 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required placeholder="Inserisci la tua password">
             </div>
-            <input type="submit" value="Registrati">
+            
+             <input type="submit" id="submitBtn" value="Registrati" />
                
 
             <div>
@@ -112,30 +113,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT PER SPINNER REGISTRATI -->
     <script>
-        document.querySelector(".registration_form").addEventListener("submit", function (e) {
-
-            const btn = document.getElementById("submitBtn");
-            const btnText = btn.querySelector(".btn-text");
-            const spinner = btn.querySelector(".spinner");
-            e.preventDefault(); // Previene l'invio del form per mostrare lo spinner
-
-            btnText.style.display = "none";
-            spinner.style.display = "inline-block";
-
-            setTimeout(() => {
-                spinner.style.display = "none";
-                btn.innerHTML = '<span class="success-check">Registrato!</span>';
-                btn.style.backgroundColor = "#4CAF50";
-
-                setTimeout(() => {
-                    btn.innerHTML = '<span class="btn-text">Registrati</span><span class="spinner" style="display: none;"></span>';
-                    btn.style.backgroundColor = "#ffac5e";
-                }, 3000);
-            }, 2000);
-        });
-
         const popup = document.getElementById("popup");
         const popupText = document.getElementById("popup-text");
         const closeBtn = document.querySelector(".close");

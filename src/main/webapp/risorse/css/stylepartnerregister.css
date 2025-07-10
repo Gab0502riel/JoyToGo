@@ -25,6 +25,9 @@ body {
 
 .logo_full {
     height: 100px;
+    margin-right: 20px;
+    
+    
 }
 
 .navbar_buttons {
@@ -53,6 +56,7 @@ body {
 
 .logo_full {
   height: 100px;
+  margin-left: 20px;
 }
 .login_prompt {
     text-align: center;
@@ -84,6 +88,8 @@ body {
   font-size: 16px;
   margin-left: auto;
   transition: all 0.3s ease;
+  margin-right: 20px;
+  
 }
 
 .login_button:hover {
@@ -126,12 +132,6 @@ form select {
   transition: all 0.3s ease;
 }
 
-form select:hover,
-form select:focus {
-  border-color: #ff8f33;
-  box-shadow: 0 0 10px rgba(255, 143, 51, 0.3);
-  outline: none;
-}
 
 form .form_group {
   display: flex;
@@ -157,17 +157,11 @@ form input[type="tel"] {
   transition: all 0.3s ease;
 }
 
-form input:hover,
-form input:focus {
-  border-color: #ff8f33;
-  box-shadow: 0 0 10px rgba(255, 143, 51, 0.3);
-  outline: none;
-}
-
 /* Submit Button */
-button[type="submit"] {
+input[type="submitBtn"] {
   background-color: #ffac5e;
   color: white;
+  text-align: center;
   border: none;
   border-radius: 20px;
   padding: 12px 20px;
@@ -181,7 +175,7 @@ button[type="submit"] {
   gap: 10px;
 }
 
-button[type="submit"]:hover {
+input[type="submitBtn"]:hover {
   background: linear-gradient(135deg, #db7445, #f07759);
   box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
 }

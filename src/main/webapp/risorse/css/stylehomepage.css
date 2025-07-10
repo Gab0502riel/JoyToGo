@@ -81,6 +81,7 @@ input[type="submit"]:hover {
 
 .logo_full {
     height: 100px;
+    margin-left: 20px;
 }
 
 .partner {
@@ -90,6 +91,7 @@ input[type="submit"]:hover {
 .login_button,
 .signup_button {
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 .signup_button:hover,

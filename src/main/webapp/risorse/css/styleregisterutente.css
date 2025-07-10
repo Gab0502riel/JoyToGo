@@ -34,6 +34,8 @@
 
 .logo_full {
     height: 100px;
+    margin-left: 20px;
+    
 }
 
 
@@ -48,9 +50,12 @@
     cursor: pointer;
     font-size: 16px;
     margin-left: 10px;
+    margin-right: 20px;
+    
+    
 }
 
-button#submitBtn {
+input[type="submit"]#submitBtn {
     background-color: #ffac5e;
     color: white;
     border: none;
@@ -59,53 +64,15 @@ button#submitBtn {
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     width: 100%;
+    margin-top: 20px;
 }
 
-button#submitBtn:hover {
+input[type="submit"]#submitBtn:hover {
     background-color: #e38f3c;
     background: linear-gradient(135deg, #db7445, #f07759);
     box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
 }
-
-.spinner {
-    width: 18px;
-    height: 18px;
-    border: 3px solid white;
-    border-top: 3px solid #ffac5e;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.success-check {
-    display: inline-block;
-    font-size: 18px;
-    color: white;
-    animation: pop 0.3s ease forwards;
-}
-
-@keyframes pop {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-}
-
 
 body {
     margin: 0;

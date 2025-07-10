@@ -37,10 +37,9 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required placeholder="Inserisci la tua password">
             </div>
-            <button type="signin" id="signinBtn">
-                <span class="btn-text">Accedi</span>
-                <span class="spinner" style="display: none;"></span>
-            </button>
+            
+		<input type="submit" id="signinBtn" value="Accedi" class="btn-text">
+
         </form>
     </div>
 

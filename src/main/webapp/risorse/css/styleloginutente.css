@@ -17,6 +17,8 @@
 
 .logo_full {
     height: 100px;
+    margin-left: 20px;
+
 }
 
 .navbar_buttons {
@@ -81,6 +83,8 @@
     cursor: pointer;
     font-size: 16px;
     margin-left: 20px;
+    margin-right: 20px;
+    
 
 }
 
@@ -176,7 +180,7 @@ input[type="submit"]:hover {
     background-color: #e38f3c;
 }
 
-button#signinBtn {
+input[type="submit"]#signinBtn {
     background-color: #ffac5e;
     color: white;
     border: none;
@@ -185,15 +189,11 @@ button#signinBtn {
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 20px;
 }
 
-button#signinBtn:hover {
+input[type="submit"]#signinBtn:hover {
     background-color: #e38f3c;
     background: linear-gradient(135deg, #db7445, #f07759);
     box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);

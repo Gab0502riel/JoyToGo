@@ -17,6 +17,7 @@
 
 .logo_full {
     height: 100px;
+    margin-left: 20px;
 }
 
 .navbar_buttons {
@@ -43,9 +44,7 @@
     box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
 }
 
-.logo_full {
-  height: 100px;
-}
+
 
 .partner {
     background-color: #ffac5e;
@@ -57,7 +56,7 @@
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
-    margin-left: auto;
+    margin-right: 20px;
 }
 
 .login_button {
@@ -73,19 +72,7 @@
     margin-left: 20px;
 }
 
-.signup_button {
-    background-color: #ffac5e;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 20px;
 
-}
 
 .signup_button:hover {
     background-color: #e38f3c;
@@ -104,13 +91,6 @@ body {
     min-height: 100vh;
     background-color: #f6f6ff;
     overflow-x: hidden;
-}
-
-form input:hover,
-form input:focus {
-  border-color: #ff8f33;
-  box-shadow: 0 0 10px rgb(255, 143, 51);
-  outline: none;
 }
 
 
@@ -186,7 +166,7 @@ input[type="submit"]:hover {
     background-color: #e38f3c;
 }
 
-button#signinBtn {
+#signinBtn {
     background-color: #ffac5e;
     color: white;
     border: none;
