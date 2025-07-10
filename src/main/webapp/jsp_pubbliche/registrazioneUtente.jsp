@@ -30,7 +30,7 @@
 
     <div class="main">
         <h1 class="main_title">Registrazione Utente</h1>
-        <form class="registration_form" action="registrazione" method="POST">
+        <form class="registration_form" action="/inserisciUtente" method="POST">
 
             <div class="form_group">
                 <label for="name">Nome:</label>

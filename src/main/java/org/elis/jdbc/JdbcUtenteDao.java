@@ -1,6 +1,7 @@
 package org.elis.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import org.elis.dao.UtenteDao;
@@ -39,7 +40,13 @@ public class JdbcUtenteDao implements UtenteDao{
 	public void insert(Utente utente) throws Exception {
 		try(Connection connection = dataSource.getConnection())
 		{
-			String query = "INSERT INTO utente(nome, cognome, email, password, sesso) VALUES(?, ?, ?, ?, ?)";
+			String query = "INSERT INTO utente(nome, cognome, email, password) VALUES(?, ?, ?, ?)";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, utente.getNome());
+			ps.setString(2, utente.getCognome());
+			ps.setString(3, utente.getEmail());
+			ps.setString(4, utente.getPassword());
+			ps.executeUpdate();
 		}
 		
 	}
