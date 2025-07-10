@@ -8,6 +8,7 @@ public class Utente {
 	private String password;
 	private String telefono;
 	private String indirizzo;
+	private Sesso sesso;
 	
 	public Utente() {}
 	
@@ -77,5 +78,11 @@ public class Utente {
 		this.indirizzo = indirizzo;
 	}
 	
-	
+	public Sesso getSesso() {
+		return sesso;
+	}
+
+	public void setSesso(Sesso sesso) {
+		this.sesso = sesso;
+	}
 }

@@ -41,10 +41,7 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required placeholder="Inserisci la tua password">
             </div>
-            <button type="signin" id="signinBtn">
-                <span class="btn-text">Accedi</span>
-                <span class="spinner" style="display: none;"></span>
-            </button>
+            <input type="signin" id="signinBtn" value="Accedi">
 
             <div>
                 <p class="submit_prompt">Non hai un account? <a href="<%=request.getContextPath()%>/jsp_pubbliche/registrazioneUtente.jsp"

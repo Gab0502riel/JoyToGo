@@ -30,7 +30,7 @@
 
     <div class="main">
         <h1 class="main_title">Registrazione Utente</h1>
-        <form class="registration_form" action="/inserisciUtente" method="POST">
+        <form class="registration_form" action="<%=request.getContextPath() %>/inserisciUtente" method="POST">
 
             <div class="form_group">
                 <label for="name">Nome:</label>
@@ -45,9 +45,9 @@
                 <label for="gender">Sesso:</label>
                 <select id="gender" name="gender" required>
                     <option value="" disabled selected>Seleziona il tuo sesso</option>
-                    <option value="Maschio">Maschio</option>
-                    <option value="Femmina">Femmina</option>
-                    <option value="Altro">Altro</option>
+                    <option value="M">Maschio</option>
+                    <option value="F">Femmina</option>
+                    <option value="A">Altro</option>
                 </select>
             </div>
             
@@ -59,10 +59,8 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required placeholder="Inserisci la tua password">
             </div>
-            <button type="submit" id="submitBtn">
-                <span class="btn-text">Registrati</span>
-                <span class="spinner" style="display: none;"></span>
-            </button>
+            <input type="submit" value="Registrati">
+               
 
             <div>
                 <p class="login_prompt">Hai già un account? <a

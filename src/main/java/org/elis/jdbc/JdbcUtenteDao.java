@@ -40,12 +40,13 @@ public class JdbcUtenteDao implements UtenteDao{
 	public void insert(Utente utente) throws Exception {
 		try(Connection connection = dataSource.getConnection())
 		{
-			String query = "INSERT INTO utente(nome, cognome, email, password) VALUES(?, ?, ?, ?)";
+			String query = "INSERT INTO utente(nome, cognome, email, password,sesso) VALUES(?, ?, ?, ?, ?)";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, utente.getNome());
 			ps.setString(2, utente.getCognome());
 			ps.setString(3, utente.getEmail());
 			ps.setString(4, utente.getPassword());
+			ps.setString(5, utente.getSesso().name());
 			ps.executeUpdate();
 		}
 		
