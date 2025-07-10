@@ -40,6 +40,17 @@
                 <label for="surname">Cognome:</label>
                 <input type="text" id="surname" name="surname" required placeholder="Inserisci il tuo cognome">
             </div>
+            
+            <div class="form_group">
+                <label for="gender">Sesso:</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Seleziona il tuo sesso</option>
+                    <option value="Maschio">Maschio</option>
+                    <option value="Femmina">Femmina</option>
+                    <option value="Altro">Altro</option>
+                </select>
+            </div>
+            
             <div class="form_group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required placeholder="Inserisci la tua email">

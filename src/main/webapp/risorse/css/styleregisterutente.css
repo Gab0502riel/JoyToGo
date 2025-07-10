@@ -138,6 +138,17 @@ body {
 
 }
 
+form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #4A2E19;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+
 .registration_form .form_group {
     display: flex;
     flex-direction: column;

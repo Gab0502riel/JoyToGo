@@ -116,6 +116,23 @@ body {
   
 }
 
+form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #4A2E19;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+form select:hover,
+form select:focus {
+  border-color: #ff8f33;
+  box-shadow: 0 0 10px rgba(255, 143, 51, 0.3);
+  outline: none;
+}
+
 form .form_group {
   display: flex;
   flex-direction: column;
