@@ -45,8 +45,8 @@
                 <label for="gender">Sesso:</label>
                 <select id="gender" name="gender" required>
                     <option value="" disabled selected>Seleziona il tuo sesso</option>
-                    <option value="M">Maschio</option>
-                    <option value="F">Femmina</option>
+                    <option value="M">Uomo</option>
+                    <option value="F">Donna</option>
                     <option value="A">Altro</option>
                 </select>
             </div>
