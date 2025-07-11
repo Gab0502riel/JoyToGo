@@ -66,6 +66,33 @@
                 <input type="text" id="business" name="business" required
                     placeholder="Inserisci il nome della tua attività">
             </div>
+            
+            <div class="form_group">
+                <label>Categorie Ristorante:</label>
+                <div class="checkbox_pills">
+                    <label class="pill">
+                        <input type="checkbox" name="categories[]" value="hamburger">
+                        Hamburgeria
+                    </label>
+                    <label class="pill">
+                        <input type="checkbox" name="categories[]" value="pizza">
+                        Pizzeria
+                    </label>
+                    <label class="pill">
+                        <input type="checkbox" name="categories[]" value="sushi">
+                        Sushi Bar
+                    </label>
+                    <label class="pill">
+                        <input type="checkbox" name="categories[]" value="fritti">
+                        Friggitoria
+                    </label>
+                    <label class="pill">
+                        <input type="checkbox" name="categories[]" value="italiano">
+                        Italiano
+                    </label>
+                </div>
+            </div>
+            
             <div class="form_group">
                 <label for="address">Indirizzo:</label>
                 <input type="text" id="address" name="address" required placeholder="Inserisci il tuo indirizzo">
