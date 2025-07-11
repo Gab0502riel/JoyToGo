@@ -6,20 +6,16 @@ public class Utente {
 	private String cognome;
 	private String email;
 	private String password;
-	private String telefono;
-	private String indirizzo;
 	private Sesso sesso;
 	
 	public Utente() {}
 	
-	public Utente(int id, String nome, String cognome, String email, String password, String telefono, String indirizzo){
+	public Utente(int id, String nome, String cognome, String email, String password){
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
 		this.password = password;
-		this.telefono = telefono;
-		this.indirizzo = indirizzo;
 	}
 
 	public int getId() {
@@ -60,22 +56,6 @@ public class Utente {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-	public String getIndirizzo() {
-		return indirizzo;
-	}
-
-	public void setIndirizzo(String indirizzo) {
-		this.indirizzo = indirizzo;
 	}
 	
 	public Sesso getSesso() {
