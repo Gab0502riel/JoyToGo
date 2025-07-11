@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.elis.dao.RistoranteDao;
+import org.elis.model.Categoria;
 import org.elis.model.Ristorante;
 import org.elis.model.Utente;
 
@@ -18,6 +19,7 @@ public class JdbcRistoranteDao implements RistoranteDao{
 	private MysqlDataSource dataSource;
 	
 	int idUtente;
+	int idRistorante;
 
 	public JdbcRistoranteDao(MysqlDataSource dataSource) {
 		super();
@@ -68,9 +70,31 @@ public class JdbcRistoranteDao implements RistoranteDao{
 			ps.setString(3, ristorante.getIndirizzo());
 			ps.setString(4, ristorante.getCitta());
 			ps.setInt(5, idUtente);
-			ps.executeUpdate();
+			int affectedRows = ps.executeUpdate();
+			
+			if (affectedRows == 0) {
+		        throw new SQLException("Inserimento ristorante fallito, nessuna riga modificata.");
+		    }
+
+		    try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+		        if (generatedKeys.next()) {
+		            idRistorante = generatedKeys.getInt(1);
+		        } else {
+		            throw new SQLException("Inserimento ristorante fallito, nessun ID ottenuto.");
+		        }
+		    }
+
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		    throw new RuntimeException("Errore durante l'inserimento dell'ristorante", e);
 		}
-		
+	}
+
+	@Override
+	public void insert(Categoria categoria) throws Exception {
+		try(Connection connection = dataSource.getConnection()){
+			String queryCategoria = "INSERT INTO "
+		}
 	}
 
 	@Override
@@ -84,6 +108,7 @@ public class JdbcRistoranteDao implements RistoranteDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 	
 	

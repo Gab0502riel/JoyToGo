@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import org.elis.model.Utente;
 import org.elis.dao.DaoFactory;
-import org.elis.dao.UtenteDao;
 import org.elis.model.Ristorante;
 import org.elis.model.Sesso;
 import org.elis.dao.RistoranteDao;
