@@ -157,7 +157,7 @@ form input[type="tel"] {
 }
 
 /* Submit Button */
-input[type="submitBtn"] {
+input[type="submit"] {
   background-color: #ffac5e;
   color: white;
   text-align: center;
@@ -174,7 +174,7 @@ input[type="submitBtn"] {
   gap: 10px;
 }
 
-input[type="submitBtn"]:hover {
+input[type="submit"]:hover {
   background: linear-gradient(135deg, #db7445, #f07759);
   box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
 }
