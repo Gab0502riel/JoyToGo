@@ -91,6 +91,9 @@ input[type="submit"]:hover {
 .login_button,
 .signup_button {
     margin-left: 20px;
+}
+
+.signup_button {
     margin-right: 20px;
 }
 

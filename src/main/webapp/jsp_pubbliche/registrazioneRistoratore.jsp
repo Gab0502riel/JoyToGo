@@ -19,10 +19,10 @@
         </a>
 
           <div class="navbar_buttons">
-            <a href="<%=request.getContextPath()%>/jsp_pubbliche/LoginRistoratore.jsp">
+            <form action="<%=request.getContextPath()%>/jsp_pubbliche/LoginRistoratore.jsp"  method="get">
                 <label for="register" class="register"></label>
                 <input type="submit" value="Accedi come Partner" class="login_button">
-            </a>
+           </form>
         </div>
     </div>
 
