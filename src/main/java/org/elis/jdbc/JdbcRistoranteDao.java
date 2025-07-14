@@ -93,7 +93,7 @@ public class JdbcRistoranteDao implements RistoranteDao{
 	@Override
 	public void insert(Categoria categoria) throws Exception {
 		try(Connection connection = dataSource.getConnection()){
-			String queryCategoria = "INSERT INTO "
+			String queryCategoria = "INSERT INTO ";
 		}
 	}
 
