@@ -42,7 +42,10 @@ public class Ordine {
 	}
 
 	public void setR_testo(String r_testo) {
-		this.r_testo = r_testo;
+		if(r_testo.length()<1||r_testo.length()>300)
+			System.out.println("Testo non valido");
+		else
+			this.r_testo = r_testo;
 	}
 
 	public int getR_voto() {
@@ -50,7 +53,10 @@ public class Ordine {
 	}
 
 	public void setR_voto(int r_voto) {
-		this.r_voto = r_voto;
+		if(r_voto<1||r_voto>5)
+			System.out.println("Valore non valido");
+		else
+			this.r_voto = r_voto;
 	}
 	
 	

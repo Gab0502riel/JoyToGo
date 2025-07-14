@@ -7,7 +7,6 @@ public class Categoria {
 	public Categoria() {}
 
 	public Categoria(int id, String nome) {
-		super();
 		this.id = id;
 		this.nome = nome;
 	}
