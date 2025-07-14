@@ -2,6 +2,9 @@ package org.elis.model;
 
 public class Ordine {
 	private int id;
+	private String r_testo;
+	private int r_voto;
+
     private enum Stato {
         ATTESA_CONFERMA("In attesa di conferma"),
         CONFERMATO("Confermato"),
@@ -19,11 +22,8 @@ public class Ordine {
             return descStato;
         }
     }
-	private String r_testo;
-	private int r_voto;
 	
 	public Ordine(int id, String r_testo, int r_voto) {
-		super();
 		this.id = id;
 		this.r_testo = r_testo;
 		this.r_voto = r_voto;

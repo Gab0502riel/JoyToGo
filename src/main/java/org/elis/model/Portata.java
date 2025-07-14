@@ -8,7 +8,6 @@ public class Portata {
 	private String foto;
 	
 	public Portata(int id, String nome, double prezzo, String descrizione, String foto) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.prezzo = prezzo;
