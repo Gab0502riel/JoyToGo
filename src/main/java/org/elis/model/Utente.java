@@ -31,9 +31,11 @@ public class Utente {
     public void setId(long id) { this.id = (int) id; }
     
     public String getNome() { return nome; }
+    
     public void setNome(String nome) { this.nome = nome; }
     
     public Ruolo getRuolo() { return ruolo; }
+    
     public void setRuolo(Ruolo ruolo) { this.ruolo = ruolo; }
     
 	public String getCognome() {
@@ -68,5 +70,9 @@ public class Utente {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Utente getRistorante() {
+		
+		return null;
 	}
 }

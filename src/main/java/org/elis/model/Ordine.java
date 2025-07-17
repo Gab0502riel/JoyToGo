@@ -29,4 +29,9 @@ public class Ordine {
     
     @OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL)
     private List<ElementoOrdine> elementi = new ArrayList<>();
+
+	public void setStato(StatoOrdine nuovoStato) {
+		// TODO Auto-generated method stub
+		
+	}
 }

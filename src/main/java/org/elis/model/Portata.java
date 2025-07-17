@@ -89,6 +89,10 @@ public class Portata {
 	public void setElementiOrdine(List<ElementoOrdine> elementiOrdine) {
 		this.elementiOrdine = elementiOrdine;
 	}
+	public void setRistorante(Ristorante r) {
+		// TODO Auto-generated method stub
+		
+	}
     
     
 }

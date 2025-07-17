@@ -15,7 +15,7 @@ import org.elis.model.Portata;
 import org.elis.model.Ruolo;
 import org.elis.model.Utente;
 
-@WebServlet("/jsp_pubbliche/aggiungi-portata")
+@WebServlet("/ristorante/aggiungi-portata")
 public class AggiungiPortataServlet extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
