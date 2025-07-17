@@ -5,10 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-import org.elis.dao.UtenteDAO;
-import org.elis.dao.UtenteDAOImpl;
-import org.elis.dao.RuoloDAO;
-import org.elis.dao.RuoloDAOImpl;
+import org.elis.dao.UtenteDao;
+import org.elis.jdbc.JdbcUtenteDao;
+import org.elis.jdbc.JdbcRuoloDao;
+import org.elis.dao.RuoloDao;
 import org.elis.model.Utente;
 import org.elis.model.Ruolo;
 
@@ -16,8 +16,8 @@ import org.elis.model.Ruolo;
 public class LoginRistoratoreServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private UtenteDAO utenteDAO = new UtenteDAOImpl();
-    private RuoloDAO ruoloDAO = new RuoloDAOImpl();
+    private UtenteDao utenteDAO = new JdbcUtenteDao();
+    private RuoloDao ruoloDAO = new getRuoloDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Mostra la pagina di login ristoratore

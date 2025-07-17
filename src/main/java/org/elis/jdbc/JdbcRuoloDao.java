@@ -1,17 +1,26 @@
-package org.elis.dao;
+package org.elis.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.elis.dao.RuoloDao;
 import org.elis.model.Ruolo;
 
-public class RuoloDAOImpl implements RuoloDAO {
+import com.mysql.cj.jdbc.MysqlDataSource;
 
-    @Override
+public class JdbcRuoloDao implements RuoloDao {
+	
+	private MysqlDataSource dataSource;
+
+    public JdbcRuoloDao(MysqlDataSource dataSource) {
+		super();
+		this.dataSource = dataSource;
+	}
+	@Override
     public void aggiungiRuolo(Ruolo ruolo) throws SQLException {
         String sql = "INSERT INTO ruolo (nome, id_utente) VALUES (?, ?)";
-        try (Connection conn = Connessione.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, ruolo.getNome());
             stmt.setInt(2, ruolo.getIdUtente());
@@ -21,7 +30,7 @@ public class RuoloDAOImpl implements RuoloDAO {
     @Override
     public Ruolo findByUtenteId(int idUtente) throws SQLException {
         String sql = "SELECT * FROM ruolo WHERE id_utente = ?";
-        try (Connection conn = Connessione.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, idUtente);

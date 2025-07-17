@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.elis.dao.DAOFactory;
-import org.elis.dao.RistoranteDAO;
-import org.elis.dao.RuoloDAO;
-import org.elis.dao.UtenteDAO;
+import org.elis.dao.DaoFactory;
+import org.elis.dao.RistoranteDao;
+import org.elis.dao.RuoloDao;
+import org.elis.dao.UtenteDao;
 import org.elis.model.Ristorante;
 import org.elis.model.Ruolo;
 import org.elis.model.Utente;
@@ -37,19 +37,19 @@ public class HomePageUtenteServlet extends HttpServlet {
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
         System.out.println("Utente in sessione: " + utenteInSessione.getEmail());
 
-        RistoranteDAO ristoranteDAO = DAOFactory.getRistoranteDAO();
-        UtenteDAO utenteDAO = DAOFactory.getUtenteDAO();
-        RuoloDAO ruoloDAO = DAOFactory.getRuoloDAO();
+        RistoranteDao ristoranteDao = DaoFactory.getRistoranteDao());
+        UtenteDao utenteDao = DaoFactory.getUtenteDao();
+        RuoloDao ruoloDao = DaoFactory.getRuoloDao();
 
         try {
-            List<Ristorante> ristoranti = ristoranteDAO.findAll();
+            List<Ristorante> ristoranti = ristoranteDao.findAll();
             if (ristoranti == null) {
                 System.out.println("Lista ristoranti è null, la sostituisco con lista vuota");
                 ristoranti = new ArrayList<>();
             }
             request.setAttribute("ristoranti", ristoranti);
 
-            Utente utenteAggiornato = utenteDAO.findByEmail(utenteInSessione.getEmail());
+            Utente utenteAggiornato = utenteDao.findByEmail(utenteInSessione.getEmail());
             if (utenteAggiornato == null) {
                 System.out.println("Utente aggiornato non trovato nel DB, redirect login.");
                 response.sendRedirect(request.getContextPath() + "/jsp_public/Login.jsp");
@@ -57,7 +57,7 @@ public class HomePageUtenteServlet extends HttpServlet {
             }
             request.setAttribute("utente", utenteAggiornato);
 
-            Ruolo ruolo = ruoloDAO.findByUtenteId(utenteAggiornato.getId());
+            Ruolo ruolo = ruoloDao.findByUtenteId(utenteAggiornato.getId());
             if (ruolo == null) {
                 System.out.println("Ruolo non trovato, continuo senza ruolo.");
             }
