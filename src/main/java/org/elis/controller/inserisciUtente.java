@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import org.elis.dao.DaoFactory;
-import org.elis.model.Sesso;
 import org.elis.model.Utente;
 
 import org.elis.dao.UtenteDao;
@@ -36,7 +35,7 @@ public class inserisciUtente extends HttpServlet {
 		            throw new IllegalArgumentException("Parametro 'gender' mancante o vuoto");
 		        }
 
-		        utente.setSesso(Sesso.valueOf(sesso));
+		        utente.setSesso((sesso));
 
 		        UtenteDao utenteDao = DaoFactory.getDaoFactory().getUtenteDao();
 		        utenteDao.insert(utente);
