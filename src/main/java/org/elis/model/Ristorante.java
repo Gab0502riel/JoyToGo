@@ -1,28 +1,43 @@
 package org.elis.model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import jakarta.persistence.*;
+
+@Entity
 public class Ristorante {
-	private int id;
-	private String nome;
-	private String telefono;
-	private String indirizzo;
-	private String citta;
-	
-	public Ristorante() {}
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String nome;
+    private String indirizzo;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_utente", nullable = false)
+    private Utente proprietario;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "ristorante_categoria",
+        joinColumns = @JoinColumn(name = "id_ristorante"),
+        inverseJoinColumns = @JoinColumn(name = "id_categoria")
+    )
+    private Set<Categoria> categorie = new HashSet<>();
+    
+    @OneToMany(mappedBy = "ristorante")
+    private List<Portata> portate = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "ristorante")
+    private List<Ordine> ordini = new ArrayList<>();
 
-	public Ristorante(int id, String nome, String telefono, String indirizzo, String citta) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.telefono = telefono;
-		this.indirizzo = indirizzo;
-		this.citta = citta;
-	}
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -34,14 +49,6 @@ public class Ristorante {
 		this.nome = nome;
 	}
 
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
 	public String getIndirizzo() {
 		return indirizzo;
 	}
@@ -50,13 +57,37 @@ public class Ristorante {
 		this.indirizzo = indirizzo;
 	}
 
-	public String getCitta() {
-		return citta;
+	public Utente getProprietario() {
+		return proprietario;
 	}
 
-	public void setCitta(String citta) {
-		this.citta = citta;
+	public void setProprietario(Utente proprietario) {
+		this.proprietario = proprietario;
 	}
-	
-	
+
+	public Set<Categoria> getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Set<Categoria> categorie) {
+		this.categorie = categorie;
+	}
+
+	public List<Portata> getPortate() {
+		return portate;
+	}
+
+	public void setPortate(List<Portata> portate) {
+		this.portate = portate;
+	}
+
+	public List<Ordine> getOrdini() {
+		return ordini;
+	}
+
+	public void setOrdini(List<Ordine> ordini) {
+		this.ordini = ordini;
+	}
+    
+    
 }

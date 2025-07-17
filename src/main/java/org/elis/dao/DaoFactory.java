@@ -1,10 +1,11 @@
 package org.elis.dao;
 
+import org.elis.dao.jpa.JPADaoFactory;
 import org.elis.jdbc.JdbcDaoFactory;
 
 public abstract class DaoFactory {
 	private static DaoFactory instance;
-	private static final String impl = "Jdbc";
+	private static final String impl = "JPA";
 	
 	public abstract UtenteDao getUtenteDao();
 	public abstract RistoranteDao getRistoranteDao();
@@ -19,6 +20,8 @@ public abstract class DaoFactory {
 			case "Jdbc":
 				instance = JdbcDaoFactory.getInstance();
 				break;
+			case "JPA":
+				instance = JPADaoFactory.getInstance();
 			}
 		}
 		return instance;
