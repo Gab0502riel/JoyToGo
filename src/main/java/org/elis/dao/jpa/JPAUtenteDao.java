@@ -48,6 +48,20 @@ public class JPAUtenteDao implements UtenteDao {
             return null;
         }
     }
+    
+    @Override
+    public Utente findByEmailAndPassword(String email, String password) {
+        try {
+            return em.createQuery(
+                "SELECT u FROM Utente u WHERE u.email = :email AND u.password = :password", Utente.class)
+                .setParameter("email", email)
+                .setParameter("password", password)
+                .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 
     // Helper per transazioni
     private void executeInTransaction(Runnable operation) {
