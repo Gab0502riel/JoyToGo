@@ -144,6 +144,16 @@
                 <button class="prev">←</button>
                 <button class="next">→</button>
             </div>
+            
+            <div class="resturant_card">
+                <div class="slider">
+                    <img src="<%=request.getContextPath()%>/risorse/res/fritto1.jpg" alt="Fritti" class="slide_main">
+                    <img src="<%=request.getContextPath()%>/risorse/res/Fritto2.jpg" alt="Fritti a casa" class="slide">
+                    <img src="<%=request.getContextPath()%>/risorse/res/fritto3.jpg" alt="Fritti" class="slide">
+                </div>
+                <button class="prev">←</button>
+                <button class="next">→</button>
+            </div>
 
             <div class="resturant_card">
                 <div class="slider">
@@ -154,6 +164,18 @@
                 <button class="prev">←</button>
                 <button class="next">→</button>
             </div>
+            
+            <div class="resturant_card">
+                <div class="slider">
+                    <img src="<%=request.getContextPath()%>/risorse/res/pasta1.jpg" alt="Pasta" class="slide_main">
+                    <img src="<%=request.getContextPath()%>/risorse/res/pasta2.jpg" alt="Pasta a casa" class="slide">
+                    <img src="<%=request.getContextPath()%>/risorse/res/pasta3.jpg" alt="Pasta" class="slide">
+                </div>
+                <button class="prev">←</button>
+                <button class="next">→</button>
+            </div>
+            
+            
 
         </div>
     </div>
