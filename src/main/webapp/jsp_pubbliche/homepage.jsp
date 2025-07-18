@@ -159,7 +159,7 @@
                 <div class="slider">
                     <img src="<%=request.getContextPath()%>/risorse/res/Sushi.jpg" alt="Sushi" class="slide_main">
                     <img src="<%=request.getContextPath()%>/risorse/res/sushiacasa.avif" alt="Sushi a casa" class="slide">
-                    <img src="<%=request.getContextPath()%>/risorse/res/poke.jpg" alt="Poke" class="slide">
+                    <img src="<%=request.getContextPath()%>/risorse/res/sushi4.jpg" alt="Poke" class="slide">
                 </div>
                 <button class="prev">←</button>
                 <button class="next">→</button>
