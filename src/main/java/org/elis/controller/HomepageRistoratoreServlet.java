@@ -11,7 +11,6 @@ import org.elis.dao.DaoFactory;
 import org.elis.dao.PortataDao;
 import org.elis.model.Portata;
 import org.elis.model.Ristorante;
-import org.elis.model.Ruolo;
 import org.elis.model.Utente;
 
 @WebServlet("/HomepageRistoratoreServlet")
