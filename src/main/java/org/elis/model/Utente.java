@@ -27,9 +27,9 @@ public class Utente {
     @JoinColumn(name = "id_ruolo")
     private Ruolo ruolo;
     
-    @ManyToOne
-    @JoinColumn(name = "id_ristorante")
+    @OneToOne(mappedBy = "proprietario")
     private Ristorante ristorante;
+
     
     
 

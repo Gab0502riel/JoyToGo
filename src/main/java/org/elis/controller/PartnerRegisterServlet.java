@@ -20,59 +20,52 @@ public class PartnerRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private final UtenteDao utenteDao = DaoFactory.getDaoFactory().getUtenteDao();
-	private final RistoranteDao ristoranteDao = DaoFactory.getDaoFactory().getRistoranteDao();
-	private final RuoloDao ruoloDao = DaoFactory.getDaoFactory().getRuoloDao();
+    private final RistoranteDao ristoranteDao = DaoFactory.getDaoFactory().getRistoranteDao();
+    private final RuoloDao ruoloDao = DaoFactory.getDaoFactory().getRuoloDao();
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			// 1. Leggi parametri dal form
-			String nome = request.getParameter("name");
-			String cognome = request.getParameter("surname");
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			String sesso = request.getParameter("gender");
-			String telefono = request.getParameter("phone");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String nome = request.getParameter("name");
+            String cognome = request.getParameter("surname");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String sesso = request.getParameter("gender");
+            String telefono = request.getParameter("phone");
+            String nomeRistorante = request.getParameter("business");
+            String indirizzo = request.getParameter("address");
+            String citta = request.getParameter("city");
 
-			String nomeRistorante = request.getParameter("business");
-			String indirizzo = request.getParameter("address");
-			String citta = request.getParameter("city");
+            Ruolo ruolo = ruoloDao.findByNome("Ristoratore");
+            if (ruolo == null) {
+                throw new RuntimeException("Ruolo 'Ristoratore' non trovato.");
+            }
 
-			// 2. Recupera ruolo RISTORATORE
-			Ruolo ruolo = ruoloDao.findByNome("RISTORATORE");
-			if (ruolo == null) {
-				throw new RuntimeException("Ruolo 'RISTORATORE' non trovato.");
-			}
+            // 1. CREA E SALVA UTENTE
+            Utente utente = new Utente();
+            utente.setNome(nome);
+            utente.setCognome(cognome);
+            utente.setEmail(email);
+            utente.setPassword(password);
+            utente.setSesso(Sesso.valueOf(sesso));
+            utente.setRuolo(ruolo);
+            utenteDao.insert(utente);
 
-			// 3. Crea e salva ristorante
-			Ristorante ristorante = new Ristorante();
-			ristorante.setNome(nomeRistorante);
-			ristorante.setIndirizzo(indirizzo);
-			ristorante.setCitta(citta);
-			ristorante.setTelefono(telefono);
-			ristoranteDao.insert(ristorante);
+            // 2. CREA E SALVA RISTORANTE CON PROPRIETARIO
+            Ristorante ristorante = new Ristorante();
+            ristorante.setNome(nomeRistorante);
+            ristorante.setIndirizzo(indirizzo);
+            ristorante.setCitta(citta);
+            ristorante.setTelefono(telefono);
+            ristorante.setProprietario(utente);
+            ristoranteDao.insert(ristorante);
 
-			// 4. Crea e salva utente
-			Utente utente = new Utente();
-			utente.setNome(nome);
-			utente.setCognome(cognome);
-			utente.setEmail(email);
-			utente.setPassword(password);
-			utente.setSesso(Sesso.valueOf(sesso));
-			utente.setRuolo(ruolo);
-			utente.setRistorante(ristorante);
-			utenteDao.insert(utente);
+            response.sendRedirect(request.getContextPath() + "/LoginRistoratoreServlet");
 
-			// 5. Redirect al login ristoratore
-			response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/LoginRistoratore.jsp");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("errore", "Errore durante la registrazione: " + e.getMessage());
-			request.getRequestDispatcher("/jsp_pubbliche/registrazioneRistoratore.jsp").forward(request, response);
-		}
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errore", "Errore durante la registrazione: " + e.getMessage());
+            request.getRequestDispatcher("/jsp_pubbliche/registrazioneRistoratore.jsp").forward(request, response);
+        }
+    }
 }
-
-
-

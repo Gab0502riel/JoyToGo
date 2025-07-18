@@ -19,7 +19,7 @@ public class JPADaoFactory extends DaoFactory {
     private final EntityManagerFactory emf;
     
     private JPADaoFactory() {
-        this.emf = Persistence.createEntityManagerFactory("JoyToGo");
+        this.emf = Persistence.createEntityManagerFactory("joytogo");
     }
     
     public static synchronized JPADaoFactory getInstance() {
