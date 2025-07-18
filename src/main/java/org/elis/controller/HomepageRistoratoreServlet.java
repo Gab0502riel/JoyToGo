@@ -26,14 +26,14 @@ public class HomepageRistoratoreServlet extends HttpServlet {
         Utente utente = (session != null) ? (Utente) session.getAttribute("utente") : null;
 
         if (utente == null || utente.getRuolo() == null || !utente.getRuolo().getNome().equalsIgnoreCase("RISTORATORE")) {
-            response.sendRedirect(request.getContextPath() + "/jsp_public/LoginRistoratore.jsp");
+            response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/LoginRistoratore.jsp");
             return;
         }
 
         Ristorante ristorante = utente.getRistorante();
         if (ristorante == null) {
             request.setAttribute("errore", "Nessun ristorante associato all’utente.");
-            request.getRequestDispatcher("/WEB-INF/jsp_private/loggedHomepageRistoratore.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp_private/HomepageRistoratore.jsp").forward(request, response);
             return;
         }
 
@@ -41,7 +41,7 @@ public class HomepageRistoratoreServlet extends HttpServlet {
         List<Portata> portate = portataDao.trovaPerRistorante(ristorante);
 
         request.setAttribute("portate", portate);
-        request.getRequestDispatcher("/WEB-INF/jsp_private/loggedHomepageRistoratore.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp_private/HomepageRistoratore.jsp").forward(request, response);
     }
 }
 

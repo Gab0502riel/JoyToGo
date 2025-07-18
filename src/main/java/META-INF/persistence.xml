@@ -6,19 +6,21 @@
 	
 	<persistence-unit name="JoyToGo">
 		<class>org.elis.model.Utente</class>
-		<class>org.elis.model.Ruolo</class>
-		<class>org.elis.model.Ristorante</class>
-		<class>org.elis.model.Portata</class>
-		<class>org.elis.model.Categoria</class>
-		<class>org.elis.model.Ordine</class>
+        <class>org.elis.model.Ruolo</class>
+        <class>org.elis.model.Ristorante</class>
+        <class>org.elis.model.Portata</class>
+        <class>org.elis.model.Categoria</class>
+        <class>org.elis.model.Ordine</class>
+        <class>org.elis.model.ElementoOrdine</class>
+
 
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="hibernate.connection.user" value="root"/>
-			<property name="hibernate.connection.password" value="root"/>
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/joytogodb"/>
-			<property name="jakarta.persistence.schema-generation.database.action" value="create-drop"/>
-			<property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/joytogodb"/>
+            <property name="hibernate.connection.user" value="root"/>
+            <property name="hibernate.connection.password" value="root"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
 		</properties>
 	</persistence-unit>
 </persistence>

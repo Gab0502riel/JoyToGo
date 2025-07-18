@@ -36,7 +36,7 @@ public class LoginRistoratoreServlet extends HttpServlet {
             Utente utente = utenteDao.findByEmailAndPassword(email, password);
 
             if (utente != null) {
-                Ruolo ruolo = ruoloDao.findByUtenteId(utente.getId());
+            	Ruolo ruolo = utente.getRuolo();
 
                 if (ruolo != null && "RISTORATORE".equalsIgnoreCase(ruolo.getNome())) {
                     HttpSession session = request.getSession();
