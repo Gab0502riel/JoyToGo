@@ -37,11 +37,14 @@ public class HomePageUtenteServlet extends HttpServlet {
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
         System.out.println("Utente in sessione: " + utenteInSessione.getEmail());
 
-        RistoranteDao ristoranteDao = DaoFactory.getRistoranteDao());
-        UtenteDao utenteDao = DaoFactory.getUtenteDao();
-        RuoloDao ruoloDao = DaoFactory.getRuoloDao();
+        // ✅ DAO Factory
+        DaoFactory daoFactory = DaoFactory.getDaoFactory();
+        RistoranteDao ristoranteDao = daoFactory.getRistoranteDao();
+        UtenteDao utenteDao = daoFactory.getUtenteDao();
+        RuoloDao ruoloDao = daoFactory.getRuoloDao();
 
         try {
+            // ✅ Carica ristoranti (assumendo che findAll() esista)
             List<Ristorante> ristoranti = ristoranteDao.findAll();
             if (ristoranti == null) {
                 System.out.println("Lista ristoranti è null, la sostituisco con lista vuota");
@@ -49,6 +52,7 @@ public class HomePageUtenteServlet extends HttpServlet {
             }
             request.setAttribute("ristoranti", ristoranti);
 
+            // ✅ Ricarica utente aggiornato
             Utente utenteAggiornato = utenteDao.findByEmail(utenteInSessione.getEmail());
             if (utenteAggiornato == null) {
                 System.out.println("Utente aggiornato non trovato nel DB, redirect login.");
@@ -57,20 +61,15 @@ public class HomePageUtenteServlet extends HttpServlet {
             }
             request.setAttribute("utente", utenteAggiornato);
 
+            // ✅ Carica ruolo (assumendo che esista findByUtenteId)
             Ruolo ruolo = ruoloDao.findByUtenteId(utenteAggiornato.getId());
             if (ruolo == null) {
                 System.out.println("Ruolo non trovato, continuo senza ruolo.");
             }
             request.setAttribute("ruolo", ruolo);
 
+            // ✅ Inoltra alla JSP privata
             String jspPath = "/WEB-INF/jsp_private/HomepageUtente.jsp";
-            if (request.getServletContext().getResource(jspPath) == null) {
-                System.out.println("ERRORE: JSP non trovata: " + jspPath);
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pagina utente non trovata");
-                return;
-            }
-
-            System.out.println("Forward alla JSP protetta");
             request.getRequestDispatcher(jspPath).forward(request, response);
 
         } catch (Exception e) {
@@ -80,6 +79,7 @@ public class HomePageUtenteServlet extends HttpServlet {
         }
     }
 }
+
 
 
 

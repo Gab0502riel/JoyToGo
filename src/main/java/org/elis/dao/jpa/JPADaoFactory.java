@@ -7,6 +7,7 @@ import org.elis.dao.DaoFactory;
 import org.elis.dao.OrdineDao;
 import org.elis.dao.PortataDao;
 import org.elis.dao.RistoranteDao;
+import org.elis.dao.RuoloDao;
 import org.elis.dao.UtenteDao;
 
 import jakarta.persistence.EntityManager;
@@ -36,6 +37,13 @@ public class JPADaoFactory extends DaoFactory {
     public UtenteDao getUtenteDao() {
         return new JPAUtenteDao(getEntityManager());
     }
+    
+    @Override
+    public RuoloDao getRuoloDao() {
+        return new JPARuoloDao(getEntityManager());
+    }
+
+
     
     @Override
     public RistoranteDao getRistoranteDao() {

@@ -11,6 +11,8 @@ public abstract class DaoFactory {
 	public abstract RistoranteDao getRistoranteDao();
 	public abstract OrdineDao getOrdineDao();
 	public abstract PortataDao getPortataDao();
+	public abstract RuoloDao getRuoloDao();
+
 	
 	public static DaoFactory getDaoFactory() {
 		if(instance==null)

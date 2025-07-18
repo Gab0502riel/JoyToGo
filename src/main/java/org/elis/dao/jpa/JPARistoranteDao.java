@@ -42,6 +42,12 @@ public class JPARistoranteDao implements RistoranteDao {
             throw new RuntimeException("Errore durante l'inserimento del ristorante", e);
         }
     }
+    
+    @Override
+    public List<Ristorante> findAll() {
+        return em.createQuery("SELECT r FROM Ristorante r", Ristorante.class).getResultList();
+    }
+
 
     
     @Override
