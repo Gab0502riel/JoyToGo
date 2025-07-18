@@ -41,6 +41,7 @@ public class JPADaoFactory extends DaoFactory {
     public RistoranteDao getRistoranteDao() {
         return new JPARistoranteDao(getEntityManager());
     }
+
     
     @Override
     public OrdineDao getOrdineDao() {

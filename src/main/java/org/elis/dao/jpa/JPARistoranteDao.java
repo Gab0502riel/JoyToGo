@@ -30,6 +30,19 @@ public class JPARistoranteDao implements RistoranteDao {
             throw new RuntimeException("Operazione fallita", e);
         }
     }
+    @Override
+    public void insert(Ristorante ristorante) {
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(ristorante);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) tx.rollback();
+            throw new RuntimeException("Errore durante l'inserimento del ristorante", e);
+        }
+    }
+
     
     @Override
     public boolean registraRistorante(Ristorante r, long idProprietario) {

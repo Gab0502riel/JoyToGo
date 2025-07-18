@@ -19,7 +19,7 @@ public class Utente {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "ENUM('M', 'F', 'A')")
-    private String sesso;
+    private Sesso sesso;
 
     private String foto = "img/default.png";
 
@@ -30,6 +30,8 @@ public class Utente {
     @ManyToOne
     @JoinColumn(name = "id_ristorante")
     private Ristorante ristorante;
+    
+    
 
     // --- GETTER E SETTER ---
 
@@ -50,8 +52,13 @@ public class Utente {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public String getSesso() { return sesso; }
-    public void setSesso(String sesso) { this.sesso = sesso; }
+    public Sesso getSesso() {
+        return sesso;
+    }
+
+    public void setSesso(Sesso sesso) {
+        this.sesso = sesso;
+    }
 
     public String getFoto() { return foto; }
     public void setFoto(String foto) { this.foto = foto; }

@@ -11,14 +11,16 @@ import jakarta.persistence.*;
 public class Ristorante {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String nome;
     private String indirizzo;
-    
+    private String telefono;
+    private String citta;
+
     @ManyToOne
     @JoinColumn(name = "id_utente", nullable = false)
     private Utente proprietario;
-    
+
     @ManyToMany
     @JoinTable(
         name = "ristorante_categoria",
@@ -26,68 +28,39 @@ public class Ristorante {
         inverseJoinColumns = @JoinColumn(name = "id_categoria")
     )
     private Set<Categoria> categorie = new HashSet<>();
-    
+
     @OneToMany(mappedBy = "ristorante")
     private List<Portata> portate = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "ristorante")
     private List<Ordine> ordini = new ArrayList<>();
 
-	public Long getId() {
-		return id;
-	}
+    // --- GETTER e SETTER ---
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-	public String getNome() {
-		return nome;
-	}
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getIndirizzo() { return indirizzo; }
+    public void setIndirizzo(String indirizzo) { this.indirizzo = indirizzo; }
 
-	public String getIndirizzo() {
-		return indirizzo;
-	}
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
 
-	public void setIndirizzo(String indirizzo) {
-		this.indirizzo = indirizzo;
-	}
+    public String getCitta() { return citta; }
+    public void setCitta(String citta) { this.citta = citta; }
 
-	public Utente getProprietario() {
-		return proprietario;
-	}
+    public Utente getProprietario() { return proprietario; }
+    public void setProprietario(Utente proprietario) { this.proprietario = proprietario; }
 
-	public void setProprietario(Utente proprietario) {
-		this.proprietario = proprietario;
-	}
+    public Set<Categoria> getCategorie() { return categorie; }
+    public void setCategorie(Set<Categoria> categorie) { this.categorie = categorie; }
 
-	public Set<Categoria> getCategorie() {
-		return categorie;
-	}
+    public List<Portata> getPortate() { return portate; }
+    public void setPortate(List<Portata> portate) { this.portate = portate; }
 
-	public void setCategorie(Set<Categoria> categorie) {
-		this.categorie = categorie;
-	}
-
-	public List<Portata> getPortate() {
-		return portate;
-	}
-
-	public void setPortate(List<Portata> portate) {
-		this.portate = portate;
-	}
-
-	public List<Ordine> getOrdini() {
-		return ordini;
-	}
-
-	public void setOrdini(List<Ordine> ordini) {
-		this.ordini = ordini;
-	}
-    
-    
+    public List<Ordine> getOrdini() { return ordini; }
+    public void setOrdini(List<Ordine> ordini) { this.ordini = ordini; }
 }

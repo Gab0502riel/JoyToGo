@@ -12,6 +12,7 @@ import org.elis.dao.DaoFactory;
 import org.elis.model.Ristorante;
 import org.elis.model.Sesso;
 import org.elis.dao.RistoranteDao;
+import org.elis.dao.UtenteDao;
 @WebServlet("/InserisciRistoranteServlet")
 public class InserisciRistoranteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -50,8 +51,12 @@ public class InserisciRistoranteServlet extends HttpServlet {
 	        utente.setSesso(Sesso.valueOf(sesso));
 
 	        RistoranteDao ristoranteDao = DaoFactory.getDaoFactory().getRistoranteDao();
-	        ristoranteDao.insert(utente);
+	        UtenteDao utenteDao = DaoFactory.getDaoFactory().getUtenteDao();
+
 	        ristoranteDao.insert(ristorante);
+	        utente.setRistorante(ristorante); // collega utente al ristorante
+	        utenteDao.insert(utente);
+
 
 	        request.getRequestDispatcher("WEB-INF/jsp_private/loggedHomepageRistoratore.jsp").forward(request, response);
 	    } catch (Exception e) {

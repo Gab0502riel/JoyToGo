@@ -16,4 +16,6 @@ public interface RistoranteDao {
     boolean rimuoviCategoria(long idRistorante, long idCategoria);
     boolean cambiaStatoOrdine(long idOrdine, StatoOrdine nuovoStato);
     List<Ordine> getOrdini(long idRistorante);
+    void insert(Ristorante ristorante);
+
 }
