@@ -1,5 +1,8 @@
 package org.elis.dao.jpa;
 
+import org.elis.dao.CategoriaDao;
+import org.elis.dao.jpa.JPACategoriaDao;
+
 import org.elis.dao.DaoFactory;
 import org.elis.dao.OrdineDao;
 import org.elis.dao.PortataDao;
@@ -25,7 +28,7 @@ public class JPADaoFactory extends DaoFactory {
         return instance;
     }
     
-    private EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
     
@@ -43,10 +46,15 @@ public class JPADaoFactory extends DaoFactory {
     public OrdineDao getOrdineDao() {
         return new JPAOrdineDao(getEntityManager());
     }
+
     
     @Override
     public PortataDao getPortataDao() {
         return new JPAPortataDao(getEntityManager());
+    }
+    
+    public CategoriaDao getCategoriaDao() {
+    	return new JPACategoriaDao(getEntityManager());
     }
     
     public void close() {

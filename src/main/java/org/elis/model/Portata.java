@@ -31,6 +31,11 @@ public class Portata {
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+    
+    // Relazione Many-to-One con Ristorante (aggiunto)
+    @ManyToOne
+    @JoinColumn(name = "id_ristorante")
+    private Ristorante ristorante;
 
     // Relazione One-to-Many con ElementoOrdine
     @OneToMany(mappedBy = "portata")
@@ -83,17 +88,21 @@ public class Portata {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	
+    public Ristorante getRistorante() {
+        return ristorante;
+    }
+
+    public void setRistorante(Ristorante ristorante) {
+        this.ristorante = ristorante;
+    }
+	
 	public List<ElementoOrdine> getElementiOrdine() {
 		return elementiOrdine;
 	}
 	public void setElementiOrdine(List<ElementoOrdine> elementiOrdine) {
 		this.elementiOrdine = elementiOrdine;
-	}
-	public void setRistorante(Ristorante r) {
-		// TODO Auto-generated method stub
-		
-	}
-    
+	}  
     
 }
 	
