@@ -26,7 +26,7 @@ public class Utente {
     @ManyToOne
     @JoinColumn(name = "id_ruolo")
     private Ruolo ruolo;
-
+    
     @ManyToOne
     @JoinColumn(name = "id_ristorante")
     private Ristorante ristorante;

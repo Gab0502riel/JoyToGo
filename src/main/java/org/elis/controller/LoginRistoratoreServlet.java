@@ -22,8 +22,7 @@ public class LoginRistoratoreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Mostra la pagina di login
-        response.sendRedirect(request.getContextPath() + "/jsp_public/LoginRistoratore.jsp");
+        response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/LoginRistoratore.jsp");
     }
 
     @Override
@@ -40,28 +39,27 @@ public class LoginRistoratoreServlet extends HttpServlet {
                 Ruolo ruolo = ruoloDao.findByUtenteId(utente.getId());
 
                 if (ruolo != null && "RISTORATORE".equalsIgnoreCase(ruolo.getNome())) {
-                    // ✅ Login corretto
                     HttpSession session = request.getSession();
                     session.setAttribute("utente", utente);
                     session.setAttribute("ruolo", ruolo);
 
-                    // Redirect alla homepage del ristoratore
-                    response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp_private/loggedHomepageRistoratore.jsp");
+                    response.sendRedirect(request.getContextPath() + "/HomepageRistoratoreServlet");
+
                 } else {
-                    // Non è un ristoratore
                     request.setAttribute("errore", "Accesso consentito solo ai ristoratori.");
-                    request.getRequestDispatcher("/jsp_public/LoginRistoratore.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp_pubbliche/LoginRistoratore.jsp").forward(request, response);
                 }
             } else {
-                // Credenziali errate
                 request.setAttribute("errore", "Email o password errati.");
-                request.getRequestDispatcher("/jsp_public/LoginRistoratore.jsp").forward(request, response);
+                request.getRequestDispatcher("/jsp_pubbliche/LoginRistoratore.jsp").forward(request, response);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errore", "Errore durante il login: " + e.getMessage());
-            request.getRequestDispatcher("/jsp_public/LoginRistoratore.jsp").forward(request, response);
+            request.getRequestDispatcher("/jsp_pubbliche/LoginRistoratore.jsp").forward(request, response);
         }
     }
 }
+
+

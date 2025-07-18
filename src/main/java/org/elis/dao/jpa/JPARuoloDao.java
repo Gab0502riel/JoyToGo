@@ -38,5 +38,17 @@ public class JPARuoloDao implements RuoloDao {
             throw new RuntimeException("Errore durante inserimento del ruolo", e);
         }
     }
+    
+    @Override
+    public Ruolo findByNome(String nome) {
+        try {
+            return em.createQuery("SELECT r FROM Ruolo r WHERE r.nome = :nome", Ruolo.class)
+                     .setParameter("nome", nome)
+                     .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 }
 
