@@ -1,9 +1,13 @@
+<%@page import="org.elis.model.Categoria"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ page import="org.elis.model.Utente" %>
+<%@ page import="org.elis.model.Ristorante" %>
 <%
     Utente utente = (Utente) session.getAttribute("utente");
+	Ristorante ristorante = (utente != null) ? utente.getRistorante() : null;
+
 %>
 <!DOCTYPE html>
 <html>
@@ -25,7 +29,7 @@
                 <img src="<%=request.getContextPath()%>/risorse/res/Black cart_48.png" alt="carrello" class="cart-icon">
                 <img src="<%=request.getContextPath()%>/risorse/res/Default.png" alt="usericcon" class="user-icon" id="user-info-icon">
             	
-					<a href="<%=request.getContextPath()%>/jsp_public/Homepage.jsp" title="Logout" class="logout-icon">
+					<a href="<%=request.getContextPath()%>/LogoutUtenteServlet" title="Logout" class="logout-icon">
 						<img src="<%=request.getContextPath()%>/risorse/res/icons8-logout-arrotondato-60.png" class="logout-icon">
 					</a>
             
@@ -49,17 +53,37 @@
         </div>
 
         <div class="informazioni-ristoranti">
-            <h2 class="ristorante-1-text"> Nome Ristorante da mettere con DB</h2>
-            <div class="ristorante-1-info">
-                <img src="<%=request.getContextPath()%>/risorse/res/ristorante1.jpg" alt="ristorante-img" class="ristorante1-img">
-                <div class="dettagli-ristorante">
-                    <p>Categoria: da db</p>
-                    <p>Telefono: +39 123 456 7890</p>
-                    <p>Indirizzo: da db</p>
-                    <p>Città: da db</p>
-                </div>
-            </div>
+    <h2 class="ristorante-1-text">
+        <%= (ristorante != null) ? ristorante.getNome() : "Nome non disponibile" %>
+    </h2>
+    <div class="ristorante-1-info">
+        <img src="<%=request.getContextPath()%>/risorse/res/ristorante1.jpg" alt="ristorante-img" class="ristorante1-img">
+        <div class="dettagli-ristorante">
+            <p><strong>Telefono:</strong> <%= (ristorante != null) ? ristorante.getTelefono() : "N/D" %></p>
+            <p><strong>Indirizzo:</strong> <%= (ristorante != null) ? ristorante.getIndirizzo() : "N/D" %></p>
+            <p><strong>Città:</strong> <%= (ristorante != null) ? ristorante.getCitta() : "N/D" %></p>
+
+<p><strong>Categorie:</strong>
+<%
+    if (ristorante != null && ristorante.getCategorie() != null && !ristorante.getCategorie().isEmpty()) {
+        for (Categoria cat : ristorante.getCategorie()) {
+            out.print(cat.getNome() + " ");
+        }
+    } else {
+        out.print("Nessuna categoria disponibile");
+    }
+%>
+</p>
+
+
+
+
+
+            
         </div>
+    </div>
+</div>
+
         
 <div class="gestione-portate">
     <div class="intestazione-portate">
@@ -145,23 +169,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

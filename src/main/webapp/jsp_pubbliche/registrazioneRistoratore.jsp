@@ -71,23 +71,23 @@
                 <label>Categorie Ristorante:</label>
                 <div class="checkbox_pills">
                     <label class="pill">
-                        <input type="checkbox" name="categories[]" value="hamburger">
+                        <input type="checkbox" name="categories[]" value="1">
                         Hamburgeria
                     </label>
                     <label class="pill">
-                        <input type="checkbox" name="categories[]" value="pizza">
+                        <input type="checkbox" name="categories[]" value="2">
                         Pizzeria
                     </label>
                     <label class="pill">
-                        <input type="checkbox" name="categories[]" value="sushi">
+                        <input type="checkbox" name="categories[]" value="3">
                         Sushi Bar
                     </label>
                     <label class="pill">
-                        <input type="checkbox" name="categories[]" value="fritti">
+                        <input type="checkbox" name="categories[]" value="4">
                         Friggitoria
                     </label>
                     <label class="pill">
-                        <input type="checkbox" name="categories[]" value="italiano">
+                        <input type="checkbox" name="categories[]" value="5">
                         Italiano
                     </label>
                 </div>

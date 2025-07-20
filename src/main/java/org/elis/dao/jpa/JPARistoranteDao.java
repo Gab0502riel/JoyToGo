@@ -44,6 +44,20 @@ public class JPARistoranteDao implements RistoranteDao {
     }
     
     @Override
+    public void aggiorna(Ristorante ristorante) {
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.merge(ristorante);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) tx.rollback();
+            throw new RuntimeException("Errore durante l'aggiornamento del ristorante", e);
+        }
+    }
+
+    
+    @Override
     public List<Ristorante> findAll() {
         return em.createQuery("SELECT r FROM Ristorante r", Ristorante.class).getResultList();
     }

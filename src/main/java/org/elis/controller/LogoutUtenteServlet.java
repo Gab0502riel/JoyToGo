@@ -25,6 +25,6 @@ public class LogoutUtenteServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();  // distrugge la sessione
         }
-        response.sendRedirect(request.getContextPath() + "/jsp_public/Login.jsp");
+        response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/homepage.jsp");
     }
 }

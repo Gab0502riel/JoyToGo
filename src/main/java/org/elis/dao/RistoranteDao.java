@@ -18,5 +18,6 @@ public interface RistoranteDao {
     List<Ordine> getOrdini(long idRistorante);
     List<Ristorante> findAll();
     void insert(Ristorante ristorante);
+    void aggiorna(Ristorante ristorante);
 
 }

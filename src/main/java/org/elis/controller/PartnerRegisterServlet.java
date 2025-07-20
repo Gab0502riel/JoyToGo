@@ -5,11 +5,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.elis.dao.DaoFactory;
 import org.elis.dao.RistoranteDao;
 import org.elis.dao.RuoloDao;
 import org.elis.dao.UtenteDao;
+import org.elis.dao.CategoriaDao;
+import org.elis.model.Categoria;
 import org.elis.model.Ristorante;
 import org.elis.model.Ruolo;
 import org.elis.model.Sesso;
@@ -22,6 +26,8 @@ public class PartnerRegisterServlet extends HttpServlet {
 	private final UtenteDao utenteDao = DaoFactory.getDaoFactory().getUtenteDao();
     private final RistoranteDao ristoranteDao = DaoFactory.getDaoFactory().getRistoranteDao();
     private final RuoloDao ruoloDao = DaoFactory.getDaoFactory().getRuoloDao();
+    private final CategoriaDao categoriaDao = DaoFactory.getDaoFactory().getCategoriaDao();
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,6 +56,22 @@ public class PartnerRegisterServlet extends HttpServlet {
             utente.setSesso(Sesso.valueOf(sesso));
             utente.setRuolo(ruolo);
             utenteDao.insert(utente);
+            
+            String[] categoriaIds = request.getParameterValues("categories");
+            Set<Categoria> categorieRistorante = new HashSet<>();
+
+            if (categoriaIds != null) {
+                for (String idStr : categoriaIds) {
+                    try {
+                        int id = Integer.parseInt(idStr);
+                        Categoria cat = categoriaDao.findById(id);  // ← usa findById della tua DAO
+                        if (cat != null) categorieRistorante.add(cat);
+                    } catch (NumberFormatException e) {
+                        // log o ignora categoria non valida
+                    }
+                }
+            }
+
 
             // 2. CREA E SALVA RISTORANTE CON PROPRIETARIO
             Ristorante ristorante = new Ristorante();
@@ -58,7 +80,11 @@ public class PartnerRegisterServlet extends HttpServlet {
             ristorante.setCitta(citta);
             ristorante.setTelefono(telefono);
             ristorante.setProprietario(utente);
+            ristorante.setCategorie(categorieRistorante); 
             ristoranteDao.insert(ristorante);
+            request.getSession().setAttribute("utente", utente);
+
+
 
             response.sendRedirect(request.getContextPath() + "/LoginRistoratoreServlet");
 
