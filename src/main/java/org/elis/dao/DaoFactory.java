@@ -12,6 +12,8 @@ public abstract class DaoFactory {
 	public abstract OrdineDao getOrdineDao();
 	public abstract PortataDao getPortataDao();
 	public abstract RuoloDao getRuoloDao();
+	public abstract CategoriaDao getCategoriaDao();
+
 
 	
 	public static DaoFactory getDaoFactory() {

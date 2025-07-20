@@ -23,5 +23,9 @@ public class JPACategoriaDao implements CategoriaDao {
         query.setParameter("ristorante", ristorante);
         return query.getResultList();
     }
+    @Override
+    public Categoria findById(int id) {
+        return em.find(Categoria.class, id);
+    }
 }
 

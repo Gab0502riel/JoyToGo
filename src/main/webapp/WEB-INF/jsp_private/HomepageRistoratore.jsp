@@ -61,13 +61,16 @@
             </div>
         </div>
         
-        <div class="gestione-portate">
-    <h2>Le tue portate</h2>
-    
-    <a href="<%=request.getContextPath()%>/jsp_ristoratore/AggiungiPortata.jsp" class="aggiungi-portata-btn">
-        + Aggiungi Portata
-    </a>
-    
+<div class="gestione-portate">
+    <div class="intestazione-portate">
+        <h2>Le tue portate</h2>
+        <a href="<%=request.getContextPath()%>/AggiungiPortataServlet" class="btn-aggiungi-portata">
+            + Aggiungi Portata
+        </a>
+    </div>
+
+
+
     <div class="lista-portate">
         <jsp:include page="listaPortateRistoratore.jsp" />
     </div>

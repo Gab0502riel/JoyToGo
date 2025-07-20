@@ -6,4 +6,6 @@ import org.elis.model.Ristorante;
 
 public interface CategoriaDao {
     List<Categoria> trovaPerRistorante(Ristorante ristorante);
+    Categoria findById(int id); 
+
 }

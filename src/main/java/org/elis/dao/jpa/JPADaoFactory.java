@@ -62,9 +62,11 @@ public class JPADaoFactory extends DaoFactory {
         return new JPAPortataDao(getEntityManager());
     }
     
+    @Override
     public CategoriaDao getCategoriaDao() {
-    	return new JPACategoriaDao(getEntityManager());
+        return new JPACategoriaDao(getEntityManager());
     }
+
     
     public void close() {
         if(emf != null && emf.isOpen()) {

@@ -1,6 +1,7 @@
 package org.elis.dao.jpa;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 import org.elis.dao.PortataDao;
@@ -17,13 +18,52 @@ public class JPAPortataDao implements PortataDao {
 
     @Override
     public void inserisci(Portata portata) {
-        em.persist(portata);
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(portata);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Errore durante l'inserimento della portata", e);
+        }
     }
 
     @Override
-    public void aggiorna(Portata portata) {
-        em.merge(portata);
+    public void elimina(Portata portata) {
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            Portata toDelete = em.merge(portata); // Assicura che l'entità sia managed
+            em.remove(toDelete);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Errore durante l'eliminazione della portata", e);
+        }
     }
+
+
+
+    @Override
+    public void aggiorna(Portata portata) {
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.merge(portata);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Errore durante l'aggiornamento della portata", e);
+        }
+    }
+
 
     @Override
     public List<Portata> trovaPerRistorante(Ristorante ristorante) {
