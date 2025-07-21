@@ -6,7 +6,6 @@
 	
 	<persistence-unit name="joytogo">
 		<class>org.elis.model.Utente</class>
-        <class>org.elis.model.Ruolo</class>
         <class>org.elis.model.Ristorante</class>
         <class>org.elis.model.Portata</class>
         <class>org.elis.model.Categoria</class>

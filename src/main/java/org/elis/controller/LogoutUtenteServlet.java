@@ -12,11 +12,6 @@ import java.io.IOException;
 @WebServlet("/LogoutUtenteServlet")
 public class LogoutUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public LogoutUtenteServlet() {
-        super();
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,6 +20,6 @@ public class LogoutUtenteServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();  // distrugge la sessione
         }
-        response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/homepage.jsp");
+        response.sendRedirect(request.getContextPath() + "/HomePageServlet");
     }
 }

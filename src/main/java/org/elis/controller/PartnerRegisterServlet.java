@@ -5,7 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.elis.dao.DaoFactory;
@@ -28,7 +30,13 @@ public class PartnerRegisterServlet extends HttpServlet {
     private final RuoloDao ruoloDao = DaoFactory.getDaoFactory().getRuoloDao();
     private final CategoriaDao categoriaDao = DaoFactory.getDaoFactory().getCategoriaDao();
 
-
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	// TODO Auto-generated method stub
+    	request.getRequestDispatcher("/jsp_pubbliche/registrazioneRistoratore.jsp").forward(request, response);
+    }
+    
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -41,11 +49,7 @@ public class PartnerRegisterServlet extends HttpServlet {
             String nomeRistorante = request.getParameter("business");
             String indirizzo = request.getParameter("address");
             String citta = request.getParameter("city");
-
-            Ruolo ruolo = ruoloDao.findByNome("Ristoratore");
-            if (ruolo == null) {
-                throw new RuntimeException("Ruolo 'Ristoratore' non trovato.");
-            }
+           
 
             // 1. CREA E SALVA UTENTE
             Utente utente = new Utente();
@@ -54,11 +58,12 @@ public class PartnerRegisterServlet extends HttpServlet {
             utente.setEmail(email);
             utente.setPassword(password);
             utente.setSesso(Sesso.valueOf(sesso));
-            utente.setRuolo(ruolo);
+            utente.setRuolo(Ruolo.RISTORATORE);
             utenteDao.insert(utente);
             
-            String[] categoriaIds = request.getParameterValues("categories");
-            Set<Categoria> categorieRistorante = new HashSet<>();
+            String[] categoriaIds = request.getParameterValues("categories[]");
+            System.out.println(categoriaIds);
+            List<Categoria> categorieRistorante = new ArrayList<>();
 
             if (categoriaIds != null) {
                 for (String idStr : categoriaIds) {
@@ -68,6 +73,7 @@ public class PartnerRegisterServlet extends HttpServlet {
                         if (cat != null) categorieRistorante.add(cat);
                     } catch (NumberFormatException e) {
                         // log o ignora categoria non valida
+                    	e.printStackTrace();
                     }
                 }
             }

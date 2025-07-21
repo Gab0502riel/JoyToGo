@@ -15,16 +15,16 @@
         <img src="<%=request.getContextPath()%>/risorse/res/LogoTakeAway - Full.png" alt="logoimg" class="logo_full" />
         
         <div class="nav-buttons">
-         <a href="<%=request.getContextPath()%>/jsp_pubbliche/registrazioneRistoratore.jsp" target="_blank">
+         <a href="<%=request.getContextPath()%>/PartnerRegisterServlet" target="_blank">
        		 <input type="submit" value="Diventa Partner" class="partner" />
         </a>
         
 
-        <a href="<%=request.getContextPath()%>/jsp_pubbliche/login.jsp" target="_blank">
+        <a href="<%=request.getContextPath()%>/LoginPageServlet" target="_blank">
             <input type="submit" value="Login" class="login_button" />
         </a>
 
-        <a href="<%=request.getContextPath()%>/jsp_pubbliche/registrazioneUtente.jsp" target="_blank">
+        <a href="<%=request.getContextPath()%>/RegisterPageServlet" target="_blank">
             <input type="submit" value="Registrati" class="signup_button" />
         </a>
     </div>

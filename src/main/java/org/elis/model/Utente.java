@@ -23,8 +23,6 @@ public class Utente {
 
     private String foto = "img/default.png";
 
-    @ManyToOne
-    @JoinColumn(name = "id_ruolo")
     private Ruolo ruolo;
     
     @OneToOne(mappedBy = "proprietario")

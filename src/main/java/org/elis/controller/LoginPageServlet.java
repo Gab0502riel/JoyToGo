@@ -13,6 +13,7 @@ public class LoginPageServlet extends HttpServlet {
        
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath()+"/jsp_pubbliche/login.jsp");	}
+		request.getRequestDispatcher("/jsp_pubbliche/login.jsp").forward(request, response);	
+		}
 
 }

@@ -11,6 +11,7 @@ import java.io.IOException;
 import org.elis.dao.DaoFactory;
 import org.elis.dao.UtenteDao;
 import org.elis.model.Utente;
+import org.elis.model.Ruolo;
 import org.elis.model.Sesso;
 
 @WebServlet("/inserisciUtente")
@@ -34,6 +35,7 @@ public class inserisciUtente extends HttpServlet {
         utente.setCognome(cognome);
         utente.setEmail(email);
         utente.setPassword(password);
+        utente.setRuolo(Ruolo.UTENTE);
 
         try {
             // Controllo sul campo "gender"
@@ -50,11 +52,11 @@ public class inserisciUtente extends HttpServlet {
             utenteDao.insert(utente);
 
             // Reindirizza al login dopo registrazione
-            request.getRequestDispatcher("jsp_pubbliche/login.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath()+"/LoginPageServlet");
 
         } catch (IllegalArgumentException e) {
             System.out.println("Valore 'gender' non valido: " + sesso);
-            response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/registrazione.jsp");
+            response.sendRedirect(request.getContextPath() + "/PartnerRegisterServlet");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/HomePageServlet");

@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/HomepageUtenteServlet")
+@WebServlet("/HomePageUtenteServlet")
 public class HomePageUtenteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -27,15 +27,16 @@ public class HomePageUtenteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("utente") == null) {
+        HttpSession session = request.getSession();
+        Utente u = (Utente) session.getAttribute("UtenteLog");
+        if (session == null || u == null) {
             System.out.println("Sessione assente o utente non loggato, redirect login.");
-            response.sendRedirect(request.getContextPath() + "/jsp_public/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/LoginPageServlet");
             return;
         }
 
-        Utente utenteInSessione = (Utente) session.getAttribute("utente");
-        System.out.println("Utente in sessione: " + utenteInSessione.getEmail());
+       
+        System.out.println("Utente in sessione: " + u.getEmail());
 
         // ✅ DAO Factory
         DaoFactory daoFactory = DaoFactory.getDaoFactory();
@@ -53,7 +54,7 @@ public class HomePageUtenteServlet extends HttpServlet {
             request.setAttribute("ristoranti", ristoranti);
 
             // ✅ Ricarica utente aggiornato
-            Utente utenteAggiornato = utenteDao.findByEmail(utenteInSessione.getEmail());
+            Utente utenteAggiornato = utenteDao.findByEmail(u.getEmail());
             if (utenteAggiornato == null) {
                 System.out.println("Utente aggiornato non trovato nel DB, redirect login.");
                 response.sendRedirect(request.getContextPath() + "/jsp_public/Login.jsp");
@@ -69,7 +70,7 @@ public class HomePageUtenteServlet extends HttpServlet {
             request.setAttribute("ruolo", ruolo);
 
             // ✅ Inoltra alla JSP privata
-            String jspPath = "/WEB-INF/jsp_private/HomepageUtente.jsp";
+            String jspPath = "/jsp_pubbliche/HomepageUtente.jsp";
             request.getRequestDispatcher(jspPath).forward(request, response);
 
         } catch (Exception e) {

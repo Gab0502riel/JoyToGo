@@ -26,7 +26,7 @@ public class HomepageRistoratoreServlet extends HttpServlet {
 
         // Verifica se l'utente è autenticato e ha ruolo RISTORATORE
         if (utente == null || utente.getRuolo() == null ||
-            !utente.getRuolo().getNome().equalsIgnoreCase("RISTORATORE")) {
+            !utente.getRuolo().name().equalsIgnoreCase("RISTORATORE")) {
             response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/LoginRistoratore.jsp");
             return;
         }

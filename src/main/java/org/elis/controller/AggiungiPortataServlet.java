@@ -38,7 +38,7 @@ public class AggiungiPortataServlet extends HttpServlet {
 
         Utente utente = (Utente) request.getSession().getAttribute("utente");
         if (utente == null || utente.getRistorante() == null) {
-            response.sendRedirect("jsp_pubbliche/LoginRistoratore.jsp");
+            response.sendRedirect(request.getContextPath()+"/LoginRistoratoreServlet");
             return;
         }
 
@@ -98,7 +98,7 @@ public class AggiungiPortataServlet extends HttpServlet {
         // 4. Ristorante dell’utente
         Utente utente = (Utente) request.getSession().getAttribute("utente");
         if (utente == null || utente.getRistorante() == null) {
-            response.sendRedirect("jsp_pubbliche/LoginRistoratore.jsp");
+        	response.sendRedirect(request.getContextPath()+"/LoginRistoratoreServlet");
             return;
         }
 

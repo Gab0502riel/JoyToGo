@@ -18,7 +18,8 @@ public class HomePageServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath()+"/jsp_pubbliche/homepage.jsp");
+		request.getRequestDispatcher("/jsp_pubbliche/homepage.jsp").forward(request, response);
+		System.out.println();
 	}
 
 }

@@ -31,7 +31,7 @@
     <div class="main">
 
         <h1 class="main_title">Login</h1>
-        <form class="registration_form" action="registrazione" method="POST">
+        <form class="registration_form" action="<%=request.getContextPath() %>/LogicaLogin" method="POST">
 
             <div class="form_group">
                 <label for="email">Email:</label>

@@ -17,20 +17,20 @@ public class JPAUtenteDao implements UtenteDao {
 
     @Override
     public void insert(Utente utente) {
-        executeInTransaction(() -> em.persist(utente));
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        em.persist(utente);
+        et.commit();
     }
 
     @Override
     public void update(Utente utente) {
-        executeInTransaction(() -> em.merge(utente));
+       
     }
 
     @Override
     public void delete(Long id) {
-        executeInTransaction(() -> {
-            Utente utente = em.find(Utente.class, id);
-            if (utente != null) em.remove(utente);
-        });
+       
     }
 
     @Override
@@ -63,18 +63,7 @@ public class JPAUtenteDao implements UtenteDao {
     }
 
 
-    // Helper per transazioni
-    private void executeInTransaction(Runnable operation) {
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            operation.run();
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) tx.rollback();
-            throw new RuntimeException("Operazione fallita", e);
-        }
-    }
+   
 
 	@Override
 	public Utente getById(int id) throws Exception {

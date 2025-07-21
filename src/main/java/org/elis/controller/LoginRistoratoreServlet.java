@@ -38,7 +38,7 @@ public class LoginRistoratoreServlet extends HttpServlet {
             if (utente != null) {
             	Ruolo ruolo = utente.getRuolo();
 
-                if (ruolo != null && "RISTORATORE".equalsIgnoreCase(ruolo.getNome())) {
+                if (ruolo != null && "RISTORATORE".equalsIgnoreCase(ruolo.name())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("utente", utente);
                     session.setAttribute("ruolo", ruolo);
