@@ -27,7 +27,7 @@ public class Ristorante {
         joinColumns = @JoinColumn(name = "id_ristorante"),
         inverseJoinColumns = @JoinColumn(name = "id_categoria")
     )
-    private Set<Categoria> categorie = new HashSet<>();
+    private List<Categoria> categorie = new ArrayList<>();
 
     @OneToMany(mappedBy = "ristorante")
     private List<Portata> portate = new ArrayList<>();
@@ -55,8 +55,8 @@ public class Ristorante {
     public Utente getProprietario() { return proprietario; }
     public void setProprietario(Utente proprietario) { this.proprietario = proprietario; }
 
-    public Set<Categoria> getCategorie() { return categorie; }
-    public void setCategorie(Set<Categoria> categorie) { this.categorie = categorie; }
+    public List<Categoria> getCategorie() { return categorie; }
+    public void setCategorie(List<Categoria> categorie) { this.categorie = categorie; }
 
     public List<Portata> getPortate() { return portate; }
     public void setPortate(List<Portata> portate) { this.portate = portate; }

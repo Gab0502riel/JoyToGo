@@ -48,6 +48,7 @@
         </div>
 
         <div class="hero-section">
+        <img alt="imhhomepager" src="<%=request.getContextPath()%>/risorse/res/ristorante1.jpg">
             <h1>Benvenuto nella tua area ristoratore!</h1>
             <p>Gestisci il tuo ristorante e i tuoi ordini con facilità.</p>
         </div>
@@ -57,7 +58,6 @@
         <%= (ristorante != null) ? ristorante.getNome() : "Nome non disponibile" %>
     </h2>
     <div class="ristorante-1-info">
-        <img src="<%=request.getContextPath()%>/risorse/res/ristorante1.jpg" alt="ristorante-img" class="ristorante1-img">
         <div class="dettagli-ristorante">
             <p><strong>Telefono:</strong> <%= (ristorante != null) ? ristorante.getTelefono() : "N/D" %></p>
             <p><strong>Indirizzo:</strong> <%= (ristorante != null) ? ristorante.getIndirizzo() : "N/D" %></p>
