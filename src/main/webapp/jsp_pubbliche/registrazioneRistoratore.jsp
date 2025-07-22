@@ -68,6 +68,12 @@
             </div>
             
             <div class="form_group">
+                <label for="foto">Immagine Ristorante:</label>
+               <input type="file" id="foto" name="foto" accept="image/*" required>
+                
+            </div>
+            
+            <div class="form_group">
                 <label>Categorie Ristorante:</label>
                 <div class="checkbox_pills">
                     <label class="pill">

@@ -48,7 +48,6 @@
         </div>
 
         <div class="hero-section">
-        <img alt="imhhomepager" src="<%=request.getContextPath()%>/risorse/res/ristorante1.jpg">
             <h1>Benvenuto nella tua area ristoratore!</h1>
             <p>Gestisci il tuo ristorante e i tuoi ordini con facilità.</p>
         </div>
@@ -87,9 +86,12 @@
         
 <div class="gestione-portate">
     <div class="intestazione-portate">
-        <h2>Le tue portate</h2>
+        <h2>Categorie</h2>
         <a href="<%=request.getContextPath()%>/AggiungiPortataServlet" class="btn-aggiungi-portata">
             + Aggiungi Portata
+        </a>
+        <a href="#" class="btn-categorie">
+            + Aggiungi Categorie
         </a>
     </div>
 

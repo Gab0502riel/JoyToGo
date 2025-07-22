@@ -687,4 +687,22 @@ ul.user-info li strong {
     transform: translateY(-2px);
 }
 
+.btn-categorie {
+    background-color: #ff7f50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-categorie:hover {
+    background-color: #e5673d;
+    transform: translateY(-2px);
+}
+
 
