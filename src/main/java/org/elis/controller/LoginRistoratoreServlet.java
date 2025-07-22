@@ -22,7 +22,7 @@ public class LoginRistoratoreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/jsp_pubbliche/LoginRistoratore.jsp");
+        request.getRequestDispatcher("/jsp_pubbliche/LoginRistoratore.jsp").forward(request, response);
     }
 
     @Override

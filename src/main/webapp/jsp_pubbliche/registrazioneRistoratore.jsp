@@ -19,7 +19,7 @@
         </a>
 
           <div class="navbar_buttons">
-            <form action="<%=request.getContextPath()%>/jsp_pubbliche/LoginRistoratore.jsp"  method="get">
+            <form action="<%=request.getContextPath()%>/LoginRistoratoreServlet"  method="get">
                 <label for="register" class="register"></label>
                 <input type="submit" value="Accedi come Partner" class="login_button">
            </form>
@@ -111,7 +111,7 @@
             
              <div>
                 <p class="login_prompt">Hai già un account partner? 
-                <a href="<%=request.getContextPath()%>/jsp_pubbliche/LoginRistoratore.jsp">Accedi</a></p>
+                <a href="<%=request.getContextPath()%>/LoginRistoratoreServlet">Accedi</a></p>
             </div>
         </form>
     </div>
