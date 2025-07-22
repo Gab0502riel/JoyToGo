@@ -94,10 +94,13 @@
                 <div class="sezione-ristoranti">    
             <div class="card-ristorante">
                 <img src="../06_HOMEPAGEUTENTE/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
+                
+                <div class="restaurant-info">
                 <h3>Nome Ristorante</h3>
                 <p class="info">Via Ristorante</p>
                 <p class="info">Telefono: +39 123 456 7890</p>
                 <p class="info">Email: info.ristorante@example.com</p>
+                </div>
             </div> 
         </div>
         
