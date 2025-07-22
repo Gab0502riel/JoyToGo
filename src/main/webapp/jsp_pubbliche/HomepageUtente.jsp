@@ -93,7 +93,7 @@
         
                 <div class="sezione-ristoranti">    
             <div class="card-ristorante">
-                <img src="../06_HOMEPAGEUTENTE/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
+                <img src="<%=request.getContextPath()%>/risorse/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
                 
                 <div class="restaurant-info">
                 <h3>Nome Ristorante</h3>
