@@ -4,11 +4,11 @@ import java.util.List;
 import org.elis.model.Portata;
 import org.elis.model.Ristorante;
 
-public interface PortataDao {
+public interface PortataDao extends GeneralDao<Portata>{
     void inserisci(Portata portata);
     void aggiorna(Portata portata);
     void elimina(Portata portata);
-    List<Portata> trovaPerRistorante(Ristorante ristorante);
+    
     Portata trovaPerId(int id);
 }
 

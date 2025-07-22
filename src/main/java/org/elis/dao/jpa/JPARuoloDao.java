@@ -1,5 +1,7 @@
 package org.elis.dao.jpa;
 
+import java.util.List;
+
 import org.elis.dao.RuoloDao;
 import org.elis.model.Ruolo;
 
@@ -49,6 +51,30 @@ public class JPARuoloDao implements RuoloDao {
             return null;
         }
     }
+
+	@Override
+	public void insert(Ruolo t) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Ruolo t) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Ruolo getById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Ruolo> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 

@@ -1,6 +1,7 @@
 package org.elis.dao.jpa;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -44,4 +45,33 @@ public class JPAOrdineDao implements OrdineDao {
         }
         return false;
     }
+
+	@Override
+	public void insert(Ordine t) throws Exception {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(t);
+		et.commit();
+	}
+
+	@Override
+	public void delete(Ordine t) throws Exception {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(t);
+		et.commit();
+		
+	}
+
+	@Override
+	public Ordine getById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Ordine> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

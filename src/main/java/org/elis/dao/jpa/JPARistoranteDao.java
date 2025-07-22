@@ -32,15 +32,10 @@ public class JPARistoranteDao implements RistoranteDao {
     }
     @Override
     public void insert(Ristorante ristorante) {
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.persist(ristorante);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) tx.rollback();
-            throw new RuntimeException("Errore durante l'inserimento del ristorante", e);
-        }
+    	EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(ristorante);
+		et.commit();
     }
     
     @Override
@@ -75,25 +70,8 @@ public class JPARistoranteDao implements RistoranteDao {
         return true;
     }
     
-    @Override
-    public boolean aggiungiPortata(long idRistorante, Portata p) {
-        executeInTransaction(() -> {
-            Ristorante r = em.find(Ristorante.class, idRistorante);
-            if (r == null) throw new IllegalArgumentException("Ristorante non trovato");
-            p.setRistorante(r);
-            em.persist(p);
-        });
-        return true;
-    }
     
-    @Override
-    public boolean rimuoviPortata(long idPortata) {
-        executeInTransaction(() -> {
-            Portata p = em.find(Portata.class, idPortata);
-            if (p != null) em.remove(p);
-        });
-        return true;
-    }
+  
     
     @Override
     public boolean aggiungiCategoria(long idRistorante, long idCategoria) {
@@ -141,5 +119,23 @@ public class JPARistoranteDao implements RistoranteDao {
             .setParameter("idRistor", idRistorante)
             .getResultList();
     }
+
+	@Override
+	public void delete(Ristorante t) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Ristorante getById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Ristorante> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

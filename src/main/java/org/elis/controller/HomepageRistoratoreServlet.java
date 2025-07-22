@@ -42,9 +42,9 @@ public class HomepageRistoratoreServlet extends HttpServlet {
 
         // Recupera portate del ristorante
         PortataDao portataDao = DaoFactory.getDaoFactory().getPortataDao();
-        List<Portata> portate = portataDao.trovaPerRistorante(ristorante);
+        //List<Portata> portate = portataDao.trovaPerRistorante(ristorante);
 
-        request.setAttribute("portate", portate);
+        //request.setAttribute("portate", portate);
         request.getRequestDispatcher("/WEB-INF/jsp_private/HomepageRistoratore.jsp").forward(request, response);
     }
 }

@@ -1,4 +1,4 @@
-package org.elis.controller.ristorante;
+package org.elis.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

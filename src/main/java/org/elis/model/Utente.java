@@ -1,5 +1,7 @@
 package org.elis.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -27,10 +29,10 @@ public class Utente {
     
     @OneToOne(mappedBy = "proprietario")
     private Ristorante ristorante;
-
     
+    @OneToMany(mappedBy="utente")
+    private List<Ordine> ordini;
     
-
     // --- GETTER E SETTER ---
 
     public long getId() { return id; }

@@ -21,16 +21,8 @@ public class Ristorante {
     @JoinColumn(name = "id_utente", nullable = false)
     private Utente proprietario;
 
-    @ManyToMany
-    @JoinTable(
-        name = "ristorante_categoria",
-        joinColumns = @JoinColumn(name = "id_ristorante"),
-        inverseJoinColumns = @JoinColumn(name = "id_categoria")
-    )
+    @OneToMany(mappedBy="ristorante")
     private List<Categoria> categorie = new ArrayList<>();
-
-    @OneToMany(mappedBy = "ristorante")
-    private List<Portata> portate = new ArrayList<>();
 
     @OneToMany(mappedBy = "ristorante")
     private List<Ordine> ordini = new ArrayList<>();
@@ -58,9 +50,7 @@ public class Ristorante {
     public List<Categoria> getCategorie() { return categorie; }
     public void setCategorie(List<Categoria> categorie) { this.categorie = categorie; }
 
-    public List<Portata> getPortate() { return portate; }
-    public void setPortate(List<Portata> portate) { this.portate = portate; }
-
+   
     public List<Ordine> getOrdini() { return ordini; }
     public void setOrdini(List<Ordine> ordini) { this.ordini = ordini; }
 }

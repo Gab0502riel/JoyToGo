@@ -8,10 +8,8 @@ import org.elis.model.Ristorante;
 import org.elis.model.StatoOrdine;
 import org.elis.model.Utente;
 
-public interface RistoranteDao {
+public interface RistoranteDao extends GeneralDao<Ristorante>{
     boolean registraRistorante(Ristorante r, long idProprietario);
-    boolean aggiungiPortata(long idRistorante, Portata p);
-    boolean rimuoviPortata(long idPortata);
     boolean aggiungiCategoria(long idRistorante, long idCategoria);
     boolean rimuoviCategoria(long idRistorante, long idCategoria);
     boolean cambiaStatoOrdine(long idOrdine, StatoOrdine nuovoStato);

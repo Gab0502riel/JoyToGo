@@ -5,7 +5,7 @@ import java.util.List;
 import org.elis.model.Ordine;
 import org.elis.model.StatoOrdine;
 
-public interface OrdineDao {
+public interface OrdineDao extends GeneralDao<Ordine>{
 
 	List<Ordine> findByRistoranteAndStato(long idRistorante, StatoOrdine confermato);
 

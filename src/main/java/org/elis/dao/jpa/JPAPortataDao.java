@@ -66,17 +66,38 @@ public class JPAPortataDao implements PortataDao {
 
 
     @Override
-    public List<Portata> trovaPerRistorante(Ristorante ristorante) {
-        TypedQuery<Portata> query = em.createQuery(
-            "SELECT p FROM Portata p WHERE p.ristorante = :ristorante", Portata.class);
-        query.setParameter("ristorante", ristorante);
-        return query.getResultList();
-    }
-
-
-    @Override
     public Portata trovaPerId(int id) {
         return em.find(Portata.class, id);
     }
+
+	@Override
+	public void insert(Portata t) throws Exception {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(t);
+		et.commit();
+		
+	}
+
+	@Override
+	public void delete(Portata t) throws Exception {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(t);
+		et.commit();
+		
+	}
+
+	@Override
+	public Portata getById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Portata> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

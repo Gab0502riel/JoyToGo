@@ -119,7 +119,6 @@ public class AggiungiPortataServlet extends HttpServlet {
         portata.setSenzaGlutine(senzaGlutine);
         portata.setSenzaLattosio(senzaLattosio);
         portata.setSurgelato(false); // oppure gestibile da checkbox
-        portata.setRistorante(utente.getRistorante());
         portata.setCategoria(categoria);
 
         portataDao.inserisci(portata);

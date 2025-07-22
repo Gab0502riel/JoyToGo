@@ -13,7 +13,7 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String nome;
 
     // Relazione: Molte categorie appartengono a un solo ristorante

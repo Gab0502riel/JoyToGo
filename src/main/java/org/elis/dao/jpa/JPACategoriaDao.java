@@ -1,6 +1,7 @@
 package org.elis.dao.jpa;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
@@ -27,5 +28,34 @@ public class JPACategoriaDao implements CategoriaDao {
     public Categoria findById(int id) {
         return em.find(Categoria.class, id);
     }
+
+	@Override
+	public void insert(Categoria t) throws Exception {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(t);
+		et.commit();
+	}
+
+	@Override
+	public void delete(Categoria t) throws Exception {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(t);
+		et.commit();
+		
+	}
+
+	@Override
+	public Categoria getById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Categoria> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

@@ -82,4 +82,13 @@ public class JPAUtenteDao implements UtenteDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void delete(Utente t) throws Exception {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(t);
+		et.commit();
+		
+	}
 }

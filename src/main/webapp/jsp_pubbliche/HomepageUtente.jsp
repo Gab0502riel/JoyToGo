@@ -26,7 +26,7 @@
                 <img src="<%=request.getContextPath()%>/risorse/res/Black cart_48.png" alt="carrello" class="cart-icon">
                 <img src="<%=request.getContextPath()%>/risorse/res/Default.png" alt="usericcon" class="user-icon" id="user-info-icon">
 	
-					<a href="<%=request.getContextPath()%>/jsp_public/Homepage.jsp" title="Logout" class="logout-icon">
+					<a href="<%=request.getContextPath()%>/LogoutUtenteServlet" title="Logout" class="logout-icon">
 						<img src="<%=request.getContextPath()%>/risorse/res/icons8-logout-arrotondato-60.png" class="logout-icon">
 					</a>
             </div>
@@ -98,9 +98,6 @@
                  <%for(Ristorante r: ristoranti){ %>
             <div class="card-ristorante">
                 <img src="<%=request.getContextPath()%>/risorse/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
-             
-
-                <img src="../06_HOMEPAGEUTENTE/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
 
                 <div class="restaurant-info">
                 <h3><%=r.getNome() %></h3>

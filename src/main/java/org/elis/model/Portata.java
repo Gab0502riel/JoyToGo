@@ -12,11 +12,13 @@ public class Portata {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
+    @Column(nullable=false)
     private String nome;
-    
+    @Column(nullable=false)
     private double prezzo;
+    
     private String descrizione;
+    
     private String foto;
     
     @Column(name = "senza_glutine")
@@ -31,11 +33,6 @@ public class Portata {
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
-    
-    // Relazione Many-to-One con Ristorante (aggiunto)
-    @ManyToOne
-    @JoinColumn(name = "id_ristorante")
-    private Ristorante ristorante;
 
     // Relazione One-to-Many con ElementoOrdine
     @OneToMany(mappedBy = "portata")
@@ -88,14 +85,6 @@ public class Portata {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-    public Ristorante getRistorante() {
-        return ristorante;
-    }
-
-    public void setRistorante(Ristorante ristorante) {
-        this.ristorante = ristorante;
-    }
 	
 	public List<ElementoOrdine> getElementiOrdine() {
 		return elementiOrdine;

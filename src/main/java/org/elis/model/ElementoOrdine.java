@@ -12,6 +12,7 @@ public class ElementoOrdine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String nome;
     private Integer quantita;
 
     @Column(name = "data_ora", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -36,11 +37,22 @@ public class ElementoOrdine {
     }
 
     // Getter e Setter
+    
+    
+    
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 
