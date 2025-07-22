@@ -60,8 +60,6 @@
         </div>
 
         <section class="search-filters">
-            <form id="searchForm" method="GET" action="SearchServlet">
-                <input type="text" name="query" placeholder="Cerca ristorante o piatto..." class="search-input" />
 
                 <select name="category" class="filter-select">
                     <option value="">Tutte le categorie</option>
@@ -89,10 +87,21 @@
                     <option value="high">€€€</option>
                 </select>
 
-                <button type="submit" class="btn-search">Cerca</button>
-            </form>
+                <button type="submit" class="btn-search">Scopri i nostri ristoranti!</button>
         </section>
         </div>
+        
+                <div class="sezione-ristoranti">    
+            <div class="card-ristorante">
+                <img src="../06_HOMEPAGEUTENTE/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
+                <h3>Nome Ristorante</h3>
+                <p class="info">Via Ristorante</p>
+                <p class="info">Telefono: +39 123 456 7890</p>
+                <p class="info">Email: info.ristorante@example.com</p>
+            </div> 
+        </div>
+        
+
         
         <footer class="footer">
             <div class="footer_container">
