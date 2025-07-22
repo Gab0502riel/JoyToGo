@@ -2,9 +2,13 @@ package org.elis.dao.jpa;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.elis.dao.PortataDao;
+import org.elis.model.Categoria;
 import org.elis.model.Portata;
 import org.elis.model.Ristorante;
 
@@ -98,6 +102,16 @@ public class JPAPortataDao implements PortataDao {
 	public List<Portata> getAll() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Portata> findByCategoria(Categoria c) {
+		List<Portata> portate = new ArrayList<>();
+		Query q = em.createQuery("SELECT c FROM Categoria c WHERE c.id = :id");
+			q.setParameter("id", c.getId());
+			Categoria cat = (Categoria)q.getSingleResult();
+			portate.addAll(cat.getPortate());
+		return portate;
 	}
 }
 

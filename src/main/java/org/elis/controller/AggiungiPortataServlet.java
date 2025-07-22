@@ -118,7 +118,7 @@ public class AggiungiPortataServlet extends HttpServlet {
         portata.setFoto(fotoRelativePath);
         portata.setSenzaGlutine(senzaGlutine);
         portata.setSenzaLattosio(senzaLattosio);
-        portata.setSurgelato(false); // oppure gestibile da checkbox
+        portata.setSurgelato(false);
         portata.setCategoria(categoria);
 
         portataDao.inserisci(portata);

@@ -5,10 +5,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.elis.dao.CategoriaDao;
 import org.elis.dao.DaoFactory;
 import org.elis.dao.PortataDao;
+import org.elis.model.Categoria;
 import org.elis.model.Portata;
 import org.elis.model.Ristorante;
 import org.elis.model.Utente;
@@ -42,9 +45,15 @@ public class HomepageRistoratoreServlet extends HttpServlet {
 
         // Recupera portate del ristorante
         PortataDao portataDao = DaoFactory.getDaoFactory().getPortataDao();
+        CategoriaDao cDao = DaoFactory.getDaoFactory().getCategoriaDao();
+        List<Portata> portate = new ArrayList<Portata>();
+        List<Categoria> categorie = cDao.trovaPerRistorante(ristorante);
+        for(Categoria c : categorie) {
+        	portate.addAll(portataDao.findByCategoria(c));
+        }
         //List<Portata> portate = portataDao.trovaPerRistorante(ristorante);
 
-        //request.setAttribute("portate", portate);
+        request.setAttribute("portate", portate);
         request.getRequestDispatcher("/WEB-INF/jsp_private/HomepageRistoratore.jsp").forward(request, response);
     }
 }
