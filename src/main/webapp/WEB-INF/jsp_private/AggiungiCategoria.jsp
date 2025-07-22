@@ -11,7 +11,7 @@
 <title>Aggiungi Categoria</title>
 </head>
 <body>
-<form action="#" method="POST">
+<form action="<%=request.getContextPath() %>/CategoriaLogica" method="POST">
 	<h1>Aggiungi Categoria</h1>
         <label for="nome_categoria">Nome Categoria:</label>
         <input type="text" id="nome_categoria" name="nome_categoria">

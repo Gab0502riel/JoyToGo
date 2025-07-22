@@ -90,7 +90,7 @@
         <a href="<%=request.getContextPath()%>/AggiungiPortataServlet" class="btn-aggiungi-portata">
             + Aggiungi Portata
         </a>
-        <a href="#" class="btn-categorie">
+        <a href="<%=request.getContextPath() %>/AggiungiCategoriaServlet" class="btn-categorie">
             + Aggiungi Categorie
         </a>
     </div>

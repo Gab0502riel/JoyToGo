@@ -25,7 +25,13 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     private List<Portata> portate = new ArrayList<>();
 
-    // --- GETTER E SETTER ---
+    
+    
+    public Categoria() {
+		
+	}
+
+	// --- GETTER E SETTER ---
 
     public Integer getId() {
         return id;
