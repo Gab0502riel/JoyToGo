@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="org.elis.model.Utente"%>
+<%@page import="org.elis.model.Ristorante"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +14,8 @@
     <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/risorse/res/LogoTakeAway - Busta.png">
     <title>Homepage Utente</title>
 </head>
+
+<% List<Ristorante> ristoranti = (List<Ristorante>)request.getAttribute("ristoranti");%>
 
 <body>
     <div class="main-content">
@@ -92,16 +95,21 @@
         </div>
         
                 <div class="sezione-ristoranti">    
+                 <%for(Ristorante r: ristoranti){ %>
             <div class="card-ristorante">
                 <img src="<%=request.getContextPath()%>/risorse/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
-                
+             
+
+                <img src="../06_HOMEPAGEUTENTE/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
+
                 <div class="restaurant-info">
-                <h3>Nome Ristorante</h3>
-                <p class="info">Via Ristorante</p>
-                <p class="info">Telefono: +39 123 456 7890</p>
-                <p class="info">Email: info.ristorante@example.com</p>
+                <h3><%=r.getNome() %></h3>
+                <p class="info"><%=r.getIndirizzo() %></p>
+                <p class="info">Telefono: <%=r.getTelefono() %></p>
+                <p class="info">Email: <%=r.getProprietario().getEmail() %></p>
                 </div>
             </div> 
+             <%} %>
         </div>
         
 
