@@ -68,7 +68,6 @@ form input[type="submit"] {
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 form input[type="submit"]:hover {

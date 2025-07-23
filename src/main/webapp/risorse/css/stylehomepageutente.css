@@ -737,6 +737,49 @@ ul.user-info li strong {
 }
 
 
+.pulsante-scopri {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+}
+
+.pulsante-scopri {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-scopri {
+  display: inline-block;
+  background-color: var(--orange-web);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 164, 0, 0.25);
+}
+
+.btn-scopri:hover {
+  background: linear-gradient(135deg, #ff9c09, #f07759);
+  box-shadow: 0 6px 20px rgba(255, 126, 95, 0.5);
+  transform: scale(1.05);
+}
+
+.btn-scopri:active {
+  transform: scale(0.96);
+  box-shadow: 0 3px 8px rgba(204, 63, 12, 0.4);
+}
+
+
 
 
 

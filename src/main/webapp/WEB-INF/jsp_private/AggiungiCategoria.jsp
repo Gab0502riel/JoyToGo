@@ -15,7 +15,7 @@
 	<h1>Aggiungi Categoria</h1>
         <label for="nome_categoria">Nome Categoria:</label>
         <input type="text" id="nome_categoria" name="nome_categoria">
-        <input type="submit">Aggiungi
+        <input type="submit" value="Aggiungi">
 	</form>
 </body>
 </html>

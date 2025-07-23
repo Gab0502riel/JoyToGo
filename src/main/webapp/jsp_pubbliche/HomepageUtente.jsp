@@ -105,8 +105,12 @@
                 <p class="info">Telefono: <%=r.getTelefono() %></p>
                 <p class="info">Email: <%=r.getProprietario().getEmail() %></p>
                 </div>
+                     <div class="pulsante-scopri">
+                    <a href="#" class="btn-scopri">Scopri ristorante
+                    </a>
+                </div>
             </div> 
-             <%} %>
+             <%} %>       
         </div>
         
 
