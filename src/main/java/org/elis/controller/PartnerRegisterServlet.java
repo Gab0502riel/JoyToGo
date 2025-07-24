@@ -64,6 +64,19 @@ public class PartnerRegisterServlet extends HttpServlet {
             filePart.write(filePath);
             String fotoRelativePath = "uploads/" + fileName;
 
+            if(utenteDao.findByEmail(email)!=null) {
+    			response.sendRedirect(request.getContextPath()+"/PartnerRegisterServlet?error=emailEsistente");
+    			return;
+    		}
+    		if(!isValidPassword(password)) {
+    			response.sendRedirect(request.getContextPath()+"/PartnerRegisterServlet?error=passwordNonValida");
+    			return;
+    		}
+    		if(ristoranteDao.findByIndirizzo(indirizzo)!=null) {
+    			response.sendRedirect(request.getContextPath()+"/PartnerRegisterServlet?error=indirizzoEsistente");
+    			return;
+    		}
+            
             // 1. CREA E SALVA UTENTE
             Utente utente = new Utente();
             utente.setNome(nome);
@@ -116,4 +129,15 @@ public class PartnerRegisterServlet extends HttpServlet {
             request.getRequestDispatcher("/jsp_pubbliche/registrazioneRistoratore.jsp").forward(request, response);
         }
     }
+    
+    public static boolean isValidPassword(String password) {
+		if (password == null || password.length() < 8) return false;
+
+		boolean haMaiuscola = password.matches(".*[A-Z].*");
+		boolean haMinuscola = password.matches(".*[a-z].*");
+		boolean haNumero = password.matches(".*\\d.*");
+		boolean haSpeciale = password.matches(".*[\\W_].*");
+
+		return haMaiuscola && haMinuscola && haNumero && haSpeciale;
+	}
 }
