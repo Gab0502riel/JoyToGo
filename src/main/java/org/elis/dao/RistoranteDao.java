@@ -17,5 +17,5 @@ public interface RistoranteDao extends GeneralDao<Ristorante>{
     List<Ristorante> findAll();
     void insert(Ristorante ristorante);
     void aggiorna(Ristorante ristorante);
-
+    Ristorante findByIndirizzo(String indirizzo);
 }

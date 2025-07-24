@@ -77,11 +77,6 @@ public class JPAUtenteDao implements UtenteDao {
 		return null;
 	}
 
-	@Override
-	public List<Utente> findByRuolo(Ruolo ruolo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void delete(Utente t) throws Exception {
@@ -90,5 +85,12 @@ public class JPAUtenteDao implements UtenteDao {
 		em.remove(t);
 		et.commit();
 		
+	}
+
+	@Override
+	public List<Utente> findRistoratori() {
+		Query q = em.createQuery("select u from Utente u where u.ruolo=:ruolo");
+		q.setParameter("ruolo", Ruolo.RISTORATORE);
+		return (List<Utente>)q.getResultList();
 	}
 }

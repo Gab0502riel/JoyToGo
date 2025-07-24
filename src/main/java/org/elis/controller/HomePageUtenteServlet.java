@@ -46,6 +46,8 @@ public class HomePageUtenteServlet extends HttpServlet {
 
         try {
             // ✅ Carica ristoranti (assumendo che findAll() esista)
+        	List<Utente> ristoratori = utenteDao.findRistoratori();
+        	request.setAttribute("ristoratori", ristoratori);
             List<Ristorante> ristoranti = ristoranteDao.findAll();
             if (ristoranti == null) {
                 System.out.println("Lista ristoranti è null, la sostituisco con lista vuota");

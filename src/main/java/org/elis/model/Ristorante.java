@@ -13,6 +13,7 @@ public class Ristorante {
     private Long id;
 
     private String nome;
+    @Column(unique=true)
     private String indirizzo;
     private String telefono;
     private String citta;

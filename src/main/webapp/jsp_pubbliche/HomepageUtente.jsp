@@ -15,7 +15,9 @@
     <title>Homepage Utente</title>
 </head>
 
-<% List<Ristorante> ristoranti = (List<Ristorante>)request.getAttribute("ristoranti");%>
+<% List<Ristorante> ristoranti = (List<Ristorante>)request.getAttribute("ristoranti");
+	List<Utente> ristoratori = (List<Utente>)request.getAttribute("ristoratori");
+%>
 
 <body>
     <div class="main-content">
@@ -97,8 +99,10 @@
                 <div class="sezione-ristoranti">    
                  <%for(Ristorante r: ristoranti){ %>
             <div class="card-ristorante">
-                <img src="<%=request.getContextPath()%>/risorse/res/pasta_1.jpg" alt="Ristorante 1" class="restaurant-image">
-
+            	<% for(Utente ut : ristoratori){
+            	if(ut.getRistorante().getId()==r.getId()){%>
+                <img src="<%=ut.getFoto() %>" alt="Ristorante 1" class="restaurant-image">
+				<%}} %>
                 <div class="restaurant-info">
                 <h3><%=r.getNome() %></h3>
                 <p class="info"><%=r.getIndirizzo() %></p>
@@ -106,7 +110,7 @@
                 <p class="info">Email: <%=r.getProprietario().getEmail() %></p>
                 </div>
                      <div class="pulsante-scopri">
-                    <a href="#" class="btn-scopri">Scopri ristorante
+                    <a href="<%=request.getContextPath()%>/ListaPortateRistoranteServlet?indirizzo=<%=r.getIndirizzo()%>"><button class="btn-scopri">Scopri ristorante</button>
                     </a>
                 </div>
             </div> 

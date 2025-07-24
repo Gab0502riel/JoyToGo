@@ -1,10 +1,13 @@
 package org.elis.controller;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +25,7 @@ import org.elis.model.Sesso;
 import org.elis.model.Utente;
 
 @WebServlet("/PartnerRegisterServlet")
+@MultipartConfig
 public class PartnerRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -50,6 +54,15 @@ public class PartnerRegisterServlet extends HttpServlet {
             String indirizzo = request.getParameter("address");
             String citta = request.getParameter("city");
            
+            Part filePart = request.getPart("foto");
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) uploadDir.mkdir();
+
+            String filePath = uploadPath + File.separator + fileName;
+            filePart.write(filePath);
+            String fotoRelativePath = "uploads/" + fileName;
 
             // 1. CREA E SALVA UTENTE
             Utente utente = new Utente();
@@ -59,6 +72,7 @@ public class PartnerRegisterServlet extends HttpServlet {
             utente.setPassword(password);
             utente.setSesso(Sesso.valueOf(sesso));
             utente.setRuolo(Ruolo.RISTORATORE);
+            utente.setFoto(fotoRelativePath);
             utenteDao.insert(utente);
             
             String[] categoriaIds = request.getParameterValues("categories[]");
@@ -90,7 +104,9 @@ public class PartnerRegisterServlet extends HttpServlet {
             ristoranteDao.insert(ristorante);
             request.getSession().setAttribute("utente", utente);
 
-
+           
+            
+            
 
             response.sendRedirect(request.getContextPath() + "/LoginRistoratoreServlet");
 

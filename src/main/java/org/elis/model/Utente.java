@@ -23,7 +23,7 @@ public class Utente {
     @Column(columnDefinition = "ENUM('M', 'F', 'A')")
     private Sesso sesso;
 
-    private String foto = "img/default.png";
+    private String foto;
 
     private Ruolo ruolo;
     

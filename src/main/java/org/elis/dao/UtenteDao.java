@@ -11,7 +11,7 @@ public interface UtenteDao extends GeneralDao<Utente> {
     void delete(Long id);
     Utente findById(Long id);
     Utente findByEmail(String email);
-    List<Utente> findByRuolo(Ruolo ruolo);
+    List<Utente> findRistoratori();
     Utente findByEmailAndPassword(String email, String password);
 
 }

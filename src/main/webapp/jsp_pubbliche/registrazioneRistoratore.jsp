@@ -29,7 +29,7 @@
     <div class="main">
 
         <h1 class="main_title">Diventa Ristoratore</h1>
-<form action="<%=request.getContextPath()%>/PartnerRegisterServlet" method="POST">
+<form action="<%=request.getContextPath()%>/PartnerRegisterServlet" enctype="multipart/form-data" method="POST">
             <div class="form_group">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required placeholder="Inserisci il tuo nome">

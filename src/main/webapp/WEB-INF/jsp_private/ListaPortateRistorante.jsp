@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="org.elis.model.Utente"%>
+    <%@page import="org.elis.model.Portata"%>
+<%@page import="org.elis.model.Ristorante"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,7 @@
   <link rel="stylesheet" href="<%=request.getContextPath()%>/risorse/css/stylelistaportate.css">
     <title>Lista Portate Ristorante</title>
 </head>
-
+<%Ristorante r = (Ristorante)request.getAttribute("ristoranteScelto");%>
 <body>
 
     <div class="navbar">
@@ -22,7 +25,7 @@
     <section class="ristorante-header">
         <img src="<%=request.getContextPath()%>/risorse/res/Patternjoytogo.png" alt="Img" class="cover-img">
         <div class="ristorante-info">
-            <h1>Nome Ristorante</h1>
+            <h1><%=r.getNome() %></h1>
         </div>
     </section>
 

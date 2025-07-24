@@ -138,4 +138,11 @@ public class JPARistoranteDao implements RistoranteDao {
 		return null;
 	}
 
+	@Override
+	public Ristorante findByIndirizzo(String indirizzo) {
+		Query q = em.createQuery("select r from Ristorante r where r.indirizzo=:indirizzo");
+		q.setParameter("indirizzo", indirizzo);
+		return (Ristorante)q.getSingleResult();
+	}
+
 }
