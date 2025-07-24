@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@page import="org.elis.model.Utente"%>
     <%@page import="org.elis.model.Portata"%>
+    <%@page import="org.elis.model.Categoria"%>
+    <%@page import="java.util.List"%>
 <%@page import="org.elis.model.Ristorante"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +12,10 @@
   <link rel="stylesheet" href="<%=request.getContextPath()%>/risorse/css/stylelistaportate.css">
     <title>Lista Portate Ristorante</title>
 </head>
-<%Ristorante r = (Ristorante)request.getAttribute("ristoranteScelto");%>
+<%Ristorante r = (Ristorante)request.getAttribute("ristoranteScelto");
+List<Categoria> categorie = (List<Categoria>)request.getAttribute("categorie");
+List<Portata> portate = (List<Portata>)request.getAttribute("portate");
+%>
 <body>
 
     <div class="navbar">
@@ -35,19 +40,31 @@
     <div class="contenuto-portate">
     <h1 class="Portate">Scopri tutti i piatti disponibili</h1>
     </div>
-    
-                <div class="sezione-portate">    
+    	
+                <div class="sezione-portate">
+                <%for(Categoria c :categorie){%>
+                <h1><%=c.getNome().toUpperCase()%></h1>
+                	<%for(Portata p : portate){
+                	if(p.getCategoria().getId()==c.getId()){%>    
             <div class="card-portate">
-                <img src="#" alt="Ristorante 1" class="restaurant-image">
+                <img src="<%=p.getFoto() %>" alt="Ristorante 1" class="restaurant-image">
                 
                 <div class="restaurant-info">
-                <h3>Nome Portata</h3>
-                <p class="info">Categoria:</p>
-                <p class="info">Descrizione:</p>
-                <p class="info">Allergeni:</p>
-                <p class="info">Prezzo:</p>
+                <h3><%=p.getNome() %></h3>
+                <p class="info">Descrizione:<%=p.getDescrizione() %></p>
+                <%if(p.isSenzaGlutine() && p.isSenzaLattosio()){ %>
+                <p class="info">Allergeni:Assenti</p>
+                <%}else if(p.isSenzaGlutine()){ %>
+                <p class="info">Allergeni:Lattosio</p>
+                <%}else if(p.isSenzaLattosio()){ %>
+                <p class="info">Allergeni:Glutine</p>
+                <%}else{ %>
+                <p class="info">Allergeni:Glutine - Lattosio</p>
+                <%} %>
+                <p class="info">Prezzo:<%=p.getPrezzo() %></p>
                 </div>
             </div> 
+            <%} } }%>
         </div>
 
 

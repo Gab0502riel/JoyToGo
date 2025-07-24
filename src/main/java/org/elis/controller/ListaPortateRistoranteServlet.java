@@ -6,9 +6,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.elis.dao.CategoriaDao;
 import org.elis.dao.DaoFactory;
 import org.elis.dao.RistoranteDao;
+import org.elis.model.Categoria;
+import org.elis.model.Portata;
 import org.elis.model.Ristorante;
 
 /**
@@ -23,8 +28,16 @@ public class ListaPortateRistoranteServlet extends HttpServlet {
 		RistoranteDao rDao= DaoFactory.getDaoFactory().getRistoranteDao();
 		String indirizzo = request.getParameter("indirizzo");
 		Ristorante r = rDao.findByIndirizzo(indirizzo);
+		List<Categoria> categorie = r.getCategorie();
+		List<Portata> portate = new ArrayList<>();
+		for(Categoria c : categorie) {
+			portate.addAll(c.getPortate());
+		}
+		
 		if(r!=null) {
 			request.setAttribute("ristoranteScelto", r);
+			request.setAttribute("categorie", categorie);
+			request.setAttribute("portate", portate);
 			request.getRequestDispatcher("/WEB-INF/jsp_private/ListaPortateRistorante.jsp").forward(request, response);
 		}
 		else {
