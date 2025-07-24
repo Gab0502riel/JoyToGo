@@ -72,10 +72,7 @@ public class PartnerRegisterServlet extends HttpServlet {
     			response.sendRedirect(request.getContextPath()+"/PartnerRegisterServlet?error=passwordNonValida");
     			return;
     		}
-    		if(ristoranteDao.findByIndirizzo(indirizzo)!=null) {
-    			response.sendRedirect(request.getContextPath()+"/PartnerRegisterServlet?error=indirizzoEsistente");
-    			return;
-    		}
+    		
             
             // 1. CREA E SALVA UTENTE
             Utente utente = new Utente();

@@ -142,7 +142,8 @@ public class JPARistoranteDao implements RistoranteDao {
 	public Ristorante findByIndirizzo(String indirizzo) {
 		Query q = em.createQuery("select r from Ristorante r where r.indirizzo=:indirizzo");
 		q.setParameter("indirizzo", indirizzo);
-		return (Ristorante)q.getSingleResult();
+		Ristorante r = (Ristorante)q.getSingleResult();
+		return r;
 	}
 
 }
