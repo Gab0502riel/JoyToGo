@@ -14,9 +14,8 @@ public class ElementoOrdine {
 
     private String nome;
     private Integer quantita;
-
-    @Column(name = "data_ora", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime dataOra = LocalDateTime.now();
+    private Double prezzo;
+   
 
     @ManyToOne
     @JoinColumn(name = "id_ordine")
@@ -33,7 +32,6 @@ public class ElementoOrdine {
         this.quantita = quantita;
         this.ordine = ordine;
         this.portata = portata;
-        this.dataOra = LocalDateTime.now();
     }
 
     // Getter e Setter
@@ -44,7 +42,15 @@ public class ElementoOrdine {
         return id;
     }
 
-    public String getNome() {
+    public Double getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(Double prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public String getNome() {
 		return nome;
 	}
 
@@ -64,13 +70,6 @@ public class ElementoOrdine {
         this.quantita = quantita;
     }
 
-    public LocalDateTime getDataOra() {
-        return dataOra;
-    }
-
-    public void setDataOra(LocalDateTime dataOra) {
-        this.dataOra = dataOra;
-    }
 
     public Ordine getOrdine() {
         return ordine;

@@ -78,10 +78,44 @@ document.querySelectorAll('.resturant_card').forEach(card => {
 
 	        // Dati statici iniziali
 	        let carrello = [
-	            { nome: "Pizza Margherita", quantita: 1 },
-	            { nome: "Hamburger Classico", quantita: 2 }
 	        ];
+			
+			document.querySelectorAll(".card-portate").forEach(card => {
+				const nome = card.querySelector("h3").textContent.trim();
+				const prezzoText = card.querySelector(".info:last-of-type").textContent.trim(); // "Prezzo: 8.99"
+				const prezzo = parseFloat(prezzoText.replace("Prezzo:", "").trim());
+			    const quantitySpan = card.querySelector(".quantity-number");
+			    const plusBtn = card.querySelector(".plus");
+			    const minusBtn = card.querySelector(".minus");
 
+			    plusBtn.addEventListener("click", () => {
+					let item = carrello.find(el => el.nome === nome);
+					if (item) {
+					    item.quantita += 1;
+					} else {
+					    item = { nome, prezzo, quantita: 1 };
+					    carrello.push(item);
+					}
+			        quantitySpan.textContent = item.quantita;
+			        aggiornaCarrello();
+			    });
+
+			    minusBtn.addEventListener("click", () => {
+			        const itemIndex = carrello.findIndex(el => el.nome === nome);
+			        if (itemIndex !== -1) {
+			            carrello[itemIndex].quantita -= 1;
+			            if (carrello[itemIndex].quantita <= 0) {
+			                carrello.splice(itemIndex, 1);
+			                quantitySpan.textContent = "0";
+			            } else {
+			                quantitySpan.textContent = carrello[itemIndex].quantita;
+			            }
+			            aggiornaCarrello();
+			        }
+			    });
+			});
+
+			
 	        function aggiornaCarrello() {
 	            cartItemsContainer.innerHTML = "";
 
@@ -122,15 +156,30 @@ document.querySelectorAll('.resturant_card').forEach(card => {
 
 	        window.modificaQuantita = modificaQuantita;
 
-	        checkoutBtn.addEventListener("click", () => {
-	            alert("Ordine completato!");
-	            carrello = [];
-	            aggiornaCarrello();
-	            cartSidebar.classList.remove("active");
-	            overlay.classList.remove("active");
-	            mainContent.classList.remove("blur");  // <- RIMUOVI BLUR AL COMPLETARE ORDINE
-
-	        });
+			checkoutBtn.addEventListener("click", () => {
+			    fetch("OrdineServlet", {
+			        method: "POST",
+			        headers: {
+			            "Content-Type": "application/json"
+			        },
+			        body: JSON.stringify(carrello)
+			    })
+			    .then(response => {
+			        if (response.ok) {
+			            alert("Ordine inviato con successo!");
+			            carrello = [];
+			            aggiornaCarrello();
+			            cartSidebar.classList.remove("active");
+			            overlay.classList.remove("active");
+			            mainContent.classList.remove("blur");
+			        } else {
+			            alert("Errore nell'invio dell'ordine.");
+			        }
+			    })
+			    .catch(error => {
+			        console.error("Errore:", error);
+			    });
+			});
 
 	        cartIcon.addEventListener("click", () => {
 	            cartSidebar.classList.add("active");

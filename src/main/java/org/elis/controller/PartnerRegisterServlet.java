@@ -9,13 +9,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.elis.dao.DaoFactory;
 import org.elis.dao.RistoranteDao;
-import org.elis.dao.RuoloDao;
+
 import org.elis.dao.UtenteDao;
 import org.elis.dao.CategoriaDao;
 import org.elis.model.Categoria;
@@ -31,7 +29,6 @@ public class PartnerRegisterServlet extends HttpServlet {
 
 	private final UtenteDao utenteDao = DaoFactory.getDaoFactory().getUtenteDao();
     private final RistoranteDao ristoranteDao = DaoFactory.getDaoFactory().getRistoranteDao();
-    private final RuoloDao ruoloDao = DaoFactory.getDaoFactory().getRuoloDao();
     private final CategoriaDao categoriaDao = DaoFactory.getDaoFactory().getCategoriaDao();
 
     @Override

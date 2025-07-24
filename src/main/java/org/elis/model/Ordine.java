@@ -1,5 +1,6 @@
 package org.elis.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,10 @@ public class Ordine {
     @JoinColumn(name = "id_ristorante")
     private Ristorante ristorante;
 
+    
+    @Column(name = "data_ora", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime dataOra = LocalDateTime.now();
+    
     @ManyToOne
     @JoinColumn(name = "id_utente")
     private Utente utente;
@@ -32,11 +37,21 @@ public class Ordine {
 
     // --- GETTER e SETTER ---
 
+    
+    
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public LocalDateTime getDataOra() {
+		return dataOra;
+	}
+
+	public void setDataOra(LocalDateTime dataOra) {
+		this.dataOra = dataOra;
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 
