@@ -43,7 +43,7 @@
 
                 <div class="search_box">
                     <input type="text" placeholder="Cerca ristoranti o piatti..." class="search_input" />
-                    <button type="submit" class="search_button">
+                    <button type="submit" class="search_button" id="search-btn">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
@@ -223,6 +223,13 @@
     </div>
 
     <script>
+    document.getElementById("search-btn").addEventListener("click", function(e) {
+        e.preventDefault(); // Previene l'invio del form
+        popupText.innerHTML = "<h3>Attenzione</h3><p>Per cercare / filtrare i risultati, devi essere registrato!</p>";
+        popup.style.display = "flex";
+    });
+    
+    
         document.querySelectorAll('.resturant_card').forEach(card => {
             const images = card.querySelectorAll('.slider img');
             let index = 0;

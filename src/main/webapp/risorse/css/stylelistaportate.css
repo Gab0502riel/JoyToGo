@@ -51,29 +51,28 @@ body::before {
 .nav-buttons {
   margin-left: auto;
   display: flex;
-  gap: 5px;
   align-items: center;
+  gap: 20px; /* Spazio uniforme tra le icone */
 }
 
 .logo_full {
   height: 100px;
   margin-left: 20px;
-  margin-bottom: 20px;
 }
 
 .user-icon {
-  margin-right: 5px;
   height: 70px;
-  margin-bottom: 20px;
 }
+
 
 .ristorante-header {
   position: relative;
   width: 100%;
-  height: 400px; 
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 29px; /* Spazio per la navbar */
 }
 
 .cover-img {
@@ -221,28 +220,31 @@ body::before {
 .cart-icon {
     cursor: pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
-    margin-right: 5px;
-    margin-bottom: 20px;
 }
 .cart-icon:hover {
     transform: scale(1.15);
     filter: drop-shadow(0 0 12px rgba(255, 145, 0, 0.8));
 }
 
-.logout-icon {
-    cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    margin-bottom: 20px;
-}
-
 
 .user-icon {
     cursor: pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
-    margin-right: 20px;
 }
 
 .user-icon:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 12px rgba(255, 145, 0, 0.8));
+}
+
+.logout-icon {
+    cursor: pointer;
+    height: 50px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-right: 10px;
+}
+
+.logout-icon:hover {
     transform: scale(1.15);
     filter: drop-shadow(0 0 12px rgba(255, 145, 0, 0.8));
 }

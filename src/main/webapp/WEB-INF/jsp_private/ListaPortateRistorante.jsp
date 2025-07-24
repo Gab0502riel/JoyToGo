@@ -20,7 +20,8 @@ List<Categoria> categorie = (List<Categoria>)request.getAttribute("categorie");
 List<Portata> portate = (List<Portata>)request.getAttribute("portate");
 %>
 <body>
-
+	    <div class="main-content">
+	
     <div class="navbar">
         <img src="<%=request.getContextPath()%>/risorse/res/LogoTakeAway - Full.png" alt="logoimg" class="logo_full" />
         <div class="nav-buttons">
@@ -76,6 +77,7 @@ List<Portata> portate = (List<Portata>)request.getAttribute("portate");
             </div>
             </div> 
             <%} } }%>
+        </div>
         </div>
 
 
