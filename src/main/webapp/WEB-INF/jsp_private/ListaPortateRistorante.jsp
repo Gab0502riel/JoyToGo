@@ -10,6 +10,9 @@
 <head>
 <meta charset="UTF-8">
   <link rel="stylesheet" href="<%=request.getContextPath()%>/risorse/css/stylelistaportate.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/risorse/res/LogoTakeAway - Busta.png">
     <title>Lista Portate Ristorante</title>
 </head>
 <%Ristorante r = (Ristorante)request.getAttribute("ristoranteScelto");
@@ -23,7 +26,10 @@ List<Portata> portate = (List<Portata>)request.getAttribute("portate");
         <div class="nav-buttons">
             <img src="<%=request.getContextPath()%>/risorse/res/Black cart_48.png" alt="carrello" class="cart-icon">
             <img src="<%=request.getContextPath()%>/risorse/res/Default.png" alt="usericcon" class="user-icon" id="user-info-icon">
-
+				
+			<a href="<%=request.getContextPath()%>/LogoutUtenteServlet" title="Logout" class="logout-icon">
+				<img src="<%=request.getContextPath()%>/risorse/res/icons8-logout-arrotondato-60.png" class="logout-icon">
+			</a>
         </div>
     </div>
 
@@ -63,6 +69,11 @@ List<Portata> portate = (List<Portata>)request.getAttribute("portate");
                 <%} %>
                 <p class="info">Prezzo:<%=p.getPrezzo() %></p>
                 </div>
+                <div class="quantity-controls">
+                	<button class="quantity-btn minus">−</button>
+               		 <span class="quantity-number">0</span>
+                	<button class="quantity-btn plus">+</button>
+            </div>
             </div> 
             <%} } }%>
         </div>
@@ -110,75 +121,27 @@ List<Portata> portate = (List<Portata>)request.getAttribute("portate");
             <div id="popup-text"></div>
         </div>
     </div>
+    
+      <!-- Sidebar Carrello -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <span class="close-cart">&times;</span>
+        <h2 class="cart-title">Il tuo carrello</h2>
+        <div class="cart-content">
+            <div class="cart-item" id="cartItem">
+                <!-- I prodotti del carrello verranno generati dinamicamente via JS -->
+            </div>
 
-    <script>
-        document.querySelectorAll('.resturant_card').forEach(card => {
-            const images = card.querySelectorAll('.slider img');
-            let index = 0;
+            <button id="checkoutBtn" class="checkout-button" style="display: none;">
+                Completa Ordine
+            </button>
+        </div>
+    </div>
 
-            images[index].classList.add('active');
+    <!-- Sfondo sfocato quando il carrello è aperto -->
+    <div id="overlay" class="overlay"></div>
 
-            const showSlide = (i) => {
-                images.forEach((img, idx) => {
-                    img.classList.remove('active');
-                });
-                images[i].classList.add('active');
-            };
-
-            card.querySelector('.prev').addEventListener('click', () => {
-                index = (index - 1 + images.length) % images.length;
-                showSlide(index);
-            });
-
-            card.querySelector('.next').addEventListener('click', () => {
-                index = (index + 1) % images.length;
-                showSlide(index);
-            });
-        });
-
-        const popup = document.getElementById("popup");
-        const popupText = document.getElementById("popup-text");
-        const closeBtn = document.querySelector(".close");
-
-        document.querySelectorAll("footer a").forEach(link => {
-            link.addEventListener("click", e => {
-                if (link.classList.contains("fa")) return;
-
-                e.preventDefault();
-                const text = link.textContent.trim();
-
-                switch (text) {
-                    case "Chi siamo":
-                        popupText.innerHTML = "<h3>Chi siamo?</h3><p>Ci presentiamo: Gabriel D'Antoni, Veronica Gioia, Alessio Biagioni, Raffaele Recupero.<br> Siamo un team di aspiranti sviluppatori che hanno creato con passione questa pagina web in ogni minimo dettaglio. E' un piacere vedervi navigare nella nostra pagina!</p>";
-                        break;
-                    case "Contatti":
-                        popupText.innerHTML = "<h3>Contatti</h3><p>Email: support@joytogo.it<br>Telefono: +39 123 456 7890</p>";
-                        break;
-                    case "FAQ":
-                        popupText.innerHTML = "<h3>FAQ</h3><p>Domande frequenti? Dai che hai voglia anche tu di un bel panino!</p>";
-                        break;
-                    case "Termini e condizioni":
-                        popupText.innerHTML = "<h3>Termini e condizioni</h3><p>Ordinare è semplice: scegli, clicca, ritira... e non litigare col panino. Leggi queste regole prima di lamentarti perché il kebab non fa i salti mortali. Non siamo responsabili se ti innamori del nostro servizio (o del sushi). Ci riserviamo il diritto di aggiornare tutto... tranne la tua fame. Accetti tutto? Brav*. Adesso scegli il ristorante, il cibo non si ordina mica da solo!</p>";
-                        break;
-                    case "Privacy policy":
-                        popupText.innerHTML = "<h3>Privacy policy</h3><p>Promesso: non spiattelleremo a nessuno che ordini 3 burger alle 23.59. I tuoi dati sono conservati meglio del tiramisù nel frigo di una nonna. Niente pubblicità invadenti, niente vendite strane. Solo cibo e tranquillità. Puoi gestire i tuoi dati quando vuoi, ma purtroppo non possiamo cancellare le calorie. E no, non usiamo i tuoi dati per suggerire l' insalata: sappiamo che volevi la pizza.</p>";
-                        break;
-                    default:
-                        popupText.innerHTML = "<p>Informazioni non disponibili.</p>";
-                }
-
-                popup.style.display = "flex";
-            });
-        });
-        closeBtn.addEventListener("click", () => {
-            popup.style.display = "none";
-        });
-
-        window.addEventListener("click", (e) => {
-            if (e.target === popup) {
-                popup.style.display = "none";
-            }
-        });
+    <script src="<%=request.getContextPath()%>/script/listaportate.js">
+       
 
     </script>
 </body>

@@ -58,11 +58,13 @@ body::before {
 .logo_full {
   height: 100px;
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .user-icon {
   margin-right: 5px;
   height: 70px;
+  margin-bottom: 20px;
 }
 
 .ristorante-header {
@@ -220,11 +222,19 @@ body::before {
     cursor: pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
     margin-right: 5px;
+    margin-bottom: 20px;
 }
 .cart-icon:hover {
     transform: scale(1.15);
     filter: drop-shadow(0 0 12px rgba(255, 145, 0, 0.8));
 }
+
+.logout-icon {
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 20px;
+}
+
 
 .user-icon {
     cursor: pointer;
@@ -537,4 +547,36 @@ ul.user-info li strong {
   font-size: 1rem;
   color: #333;
   line-height: 1.4;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity-btn {
+  background-color: var(--sinopia);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+  background-color: var(--orange-web);
+  transform: scale(1.05);
+}
+
+.quantity-number {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  min-width: 20px;
+  text-align: center;
 }
