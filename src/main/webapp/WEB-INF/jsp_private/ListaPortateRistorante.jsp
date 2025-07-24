@@ -35,6 +35,20 @@
     <div class="contenuto-portate">
     <h1 class="Portate">Scopri tutti i piatti disponibili</h1>
     </div>
+    
+                <div class="sezione-portate">    
+            <div class="card-portate">
+                <img src="#" alt="Ristorante 1" class="restaurant-image">
+                
+                <div class="restaurant-info">
+                <h3>Nome Portata</h3>
+                <p class="info">Categoria:</p>
+                <p class="info">Descrizione:</p>
+                <p class="info">Allergeni:</p>
+                <p class="info">Prezzo:</p>
+                </div>
+            </div> 
+        </div>
 
 
     <footer class="footer">
