@@ -94,10 +94,7 @@ const popup = document.getElementById("popup");
        const mainContent = document.querySelector(".main-content"); // <-- PRIMA COSA: seleziona il contenitore principale
 
        // Dati statici iniziali
-       let carrello = [
-           { nome: "Pizza Margherita", quantita: 1 },
-           { nome: "Hamburger Classico", quantita: 2 }
-       ];
+      
 
        function aggiornaCarrello() {
            cartItemsContainer.innerHTML = "";
