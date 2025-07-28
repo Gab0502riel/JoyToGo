@@ -766,6 +766,7 @@ ul.user-info li strong {
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(255, 164, 0, 0.25);
+  border: none;
 }
 
 .btn-scopri:hover {

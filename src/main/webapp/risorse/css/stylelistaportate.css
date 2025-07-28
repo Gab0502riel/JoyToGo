@@ -428,6 +428,12 @@ ul.user-info li strong {
     padding-bottom: 10px;
 }
 
+.cart-content a,
+.cart-content a button {
+  text-decoration: none !important;
+}
+
+
 .cart-item-name {
     font-weight: 600;
     max-width: 140px;
