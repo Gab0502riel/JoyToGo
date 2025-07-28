@@ -5,12 +5,18 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
+import org.elis.dao.DaoFactory;
+import org.elis.dao.OrdineDao;
 import org.elis.model.ElementoOrdine;
+import org.elis.model.Ordine;
+import org.elis.model.Ristorante;
+import org.elis.model.Utente;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -40,7 +46,7 @@ public class OrdineServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect(request.getContextPath() + "/OrdineEffettuatoServlet");
 	}
 
 	/**
@@ -66,13 +72,34 @@ public class OrdineServlet extends HttpServlet {
 	    double totale = 0;
 
 	    for (ElementoOrdine p : carrello) {
-	        double subTotale = p.getPrezzo() * p.getQuantita();
+	        Double subTotale = p.getPrezzo() * p.getQuantita();
 	        totale += subTotale;
 	        System.out.println("Portata: " + p.getNome() + " x" + p.getQuantita() + " = " + subTotale + "€");
 	    }
 
 	    System.out.println("Totale ordine: " + totale + "€");
-
+	    
+	    HttpSession session = request.getSession();
+	    Utente utente = (Utente) session.getAttribute("UtenteLog");
+	    Ristorante ristorante = (Ristorante) session.getAttribute("ristoranteScelto");
+	    Ordine ordine = new Ordine();
+	    
+	    ordine.setUtente(utente);
+	    ordine.setRistorante(ristorante);
+	    ordine.setElementi(carrello);
+	    session.setAttribute("ordineEffettuato", ordine);
+	    
+	    OrdineDao oDao= DaoFactory.getDaoFactory().getOrdineDao();
+	    try {
+			oDao.insert(ordine);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	    response.sendRedirect(request.getContextPath()+"/OrdineEffettuatoServlet");
+	    
+	    
 	    response.setStatus(HttpServletResponse.SC_OK);
 	}
 

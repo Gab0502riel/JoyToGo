@@ -68,7 +68,7 @@ List<Portata> portate = (List<Portata>)request.getAttribute("portate");
                 <%}else{ %>
                 <p class="info">Allergeni:Glutine - Lattosio</p>
                 <%} %>
-                <p class="info">Prezzo:<%=p.getPrezzo() %></p>
+                <p class="info">Prezzo:€ <%=p.getPrezzo() %></p>
                 </div>
                 <div class="quantity-controls">
                 	<button class="quantity-btn minus">−</button>

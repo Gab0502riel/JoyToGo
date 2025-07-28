@@ -38,6 +38,8 @@ public class ListaPortateRistoranteServlet extends HttpServlet {
 			request.setAttribute("ristoranteScelto", r);
 			request.setAttribute("categorie", categorie);
 			request.setAttribute("portate", portate);
+			request.getSession().setAttribute("ristoranteScelto", r);
+	
 			request.getRequestDispatcher("/WEB-INF/jsp_private/ListaPortateRistorante.jsp").forward(request, response);
 		}
 		else {
