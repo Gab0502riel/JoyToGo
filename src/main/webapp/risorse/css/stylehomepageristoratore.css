@@ -106,9 +106,9 @@ body {
 
 .ristorante-1-info {
     display: flex;
-    flex-direction: row; /* Cambiato da column a row */
+    flex-direction: row; 
     align-items: flex-start;
-    gap: 40px; /* Spazio tra immagine e testo */
+    gap: 40px; 
     background: linear-gradient(135deg, #f8f3f3, #e0dddd);
     color: #68452a;
     font-weight: bold;
@@ -255,7 +255,6 @@ body {
     font-size: 14px;
 }
 
-/* Effetto pulsante (scaling lento) */
 @keyframes pulse {
 
     0%,
@@ -284,7 +283,6 @@ body {
     margin-right: 20px;
 }
 
-/* Hover: ingrandisci e più glow */
 .user-icon:hover {
     transform: scale(1.15);
     filter: drop-shadow(0 0 12px rgba(255, 145, 0, 0.8));
@@ -328,7 +326,6 @@ ul.user-info li strong {
 
 
 
-/* Popup (già ti ho dato il CSS nel messaggio precedente) */
 .popup {
     display: none;
     position: fixed;
@@ -400,11 +397,10 @@ ul.user-info li strong {
     color: #ff9100;
 }
 
-/* Sidebar Carrello */
 .cart-sidebar {
     position: fixed;
     top: 0;
-    right: -520px; /* nascosta fuori schermo a destra */
+    right: -520px; 
     width: 520px;
     height: 100vh;
     background-color: #fff;
@@ -416,10 +412,9 @@ ul.user-info li strong {
 }
 
 .cart-sidebar.active {
-    right: 0; /* appare a schermo */
+    right: 0; 
 }
 
-/* Overlay scuro */
 .overlay {
     position: fixed;
     top: 0;
@@ -438,7 +433,6 @@ ul.user-info li strong {
     visibility: visible;
 }
 
-/* Bottone chiusura sidebar */
 .close-cart {
     cursor: pointer;
     font-size: 24px;
@@ -449,17 +443,16 @@ ul.user-info li strong {
 }
 
 .close-cart:hover {
-    color: #cc5200; /* arancione più scuro per hover */
+    color: #cc5200;
 }
 
 .cart-title {
     text-align: center;
-    color: #ffa400ff; /* arancione coerente col sito */
-    font-weight: 700; /* più spessa */
-    margin: 0 0 15px 0; /* margine sotto per distanziare */
+    color: #ffa400ff; 
+    font-weight: 700; 
+    margin: 0 0 15px 0; 
 }
 
-/* Stile contenuto carrello */
 .cart-content {
     margin-top: 20px;
 }
@@ -519,11 +512,10 @@ ul.user-info li strong {
     box-shadow: 0 6px 20px rgba(255, 126, 95, 0.7);
 }
 
-/* Contenuto principale sfocato quando sidebar aperta */
 .main-content.blur {
     filter: blur(5px);
-    pointer-events: none; /* disabilita click/hover sul contenuto sfocato */
-    user-select: none; /* non permette selezione testo */
+    pointer-events: none; 
+    user-select: none; 
     transition: filter 0.3s ease;
 }
 
@@ -667,9 +659,10 @@ ul.user-info li strong {
     margin: 0;
     font-size: 1.8rem;
     color: #333;
+    text-align: center;
 }
 
-.btn-aggiungi-portata {
+.btn-sezione {
     background-color: #ff7f50;
     color: white;
     padding: 10px 20px;
@@ -680,46 +673,76 @@ ul.user-info li strong {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
 }
 
-.btn-aggiungi-portata:hover {
+.btn-sezione:hover {
     background-color: #e5673d;
     transform: translateY(-2px);
 }
 
-.btn-categorie {
-    background-color: #ff7f50;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.intestazione-portate {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-.btn-categorie:hover {
-    background-color: #e5673d;
-    transform: translateY(-2px);
+.text{
+	text-align: center;
+	color: #4A2E19;
+	
 }
 
-.btn-gestione-ordini {
-  display: inline-block;
-  padding: 12px 25px;
-  background-color: #db7445;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 20px;
-  transition: background 0.3s ease;
-  margin-top: 20px;
+.info-ristorante-card {
+    background: linear-gradient(135deg, #fdf1e4, #ffe8d2);
+    border-left: 8px solid #ff7f50;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    padding: 25px 30px;
+    margin: 30px;
+    color: #4A2E19;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.btn-gestione-ordini:hover {
-  background: linear-gradient(135deg, #cc3f0c, #f07759);
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
 }
+
+.info-header h2 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.icon-header {
+    font-size: 2rem;
+    color: #ff7f50;
+}
+
+.info-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    color: #4A2E19;
+}
+
+.info-group i {
+    color: #cc3f0cff;
+    font-size: 1.2rem;
+}
+
+
+
+
 
 
 

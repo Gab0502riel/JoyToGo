@@ -52,27 +52,41 @@
             <p>Gestisci il tuo ristorante e i tuoi ordini con facilità.</p>
         </div>
 
-        <div class="informazioni-ristoranti">
-    <h2 class="ristorante-1-text">
-        <%= (ristorante != null) ? ristorante.getNome() : "Nome non disponibile" %>
-    </h2>
-    <div class="ristorante-1-info">
-        <div class="dettagli-ristorante">
-            <p><strong>Telefono:</strong> <%= (ristorante != null) ? ristorante.getTelefono() : "N/D" %></p>
-            <p><strong>Indirizzo:</strong> <%= (ristorante != null) ? ristorante.getIndirizzo() : "N/D" %></p>
-            <p><strong>Città:</strong> <%= (ristorante != null) ? ristorante.getCitta() : "N/D" %></p>
+       <div class="info-ristorante-card">
+    <div class="info-header">
+        <i class="fas fa-store-alt icon-header"></i>
+        <h2><%= (ristorante != null) ? ristorante.getNome() : "Nome non disponibile" %></h2>
+    </div>
+    <div class="info-body">
+        <div class="info-group">
+            <i class="fas fa-phone-alt"></i>
+            <span><strong>Telefono:</strong> <%= (ristorante != null) ? ristorante.getTelefono() : "N/D" %></span>
+        </div>
+        <div class="info-group">
+            <i class="fas fa-map-marker-alt"></i>
+            <span><strong>Indirizzo:</strong> <%= (ristorante != null) ? ristorante.getIndirizzo() : "N/D" %></span>
+        </div>
+        <div class="info-group">
+            <i class="fas fa-city"></i>
+            <span><strong>Città:</strong> <%= (ristorante != null) ? ristorante.getCitta() : "N/D" %></span>
+        </div>
+        <div class="info-group">
+            <i class="fas fa-tags"></i>
+            <span><strong>Categorie:</strong>
+            <%
+                if (ristorante != null && ristorante.getCategorie() != null && !ristorante.getCategorie().isEmpty()) {
+                    for (Categoria cat : ristorante.getCategorie()) {
+                        out.print(cat.getNome() + " ");
+                    }
+                } else {
+                    out.print("Nessuna categoria disponibile");
+                }
+            %>
+            </span>
+        </div>
+    </div>
+</div>
 
-<p><strong>Categorie:</strong>
-<%
-    if (ristorante != null && ristorante.getCategorie() != null && !ristorante.getCategorie().isEmpty()) {
-        for (Categoria cat : ristorante.getCategorie()) {
-            out.print(cat.getNome() + " ");
-        }
-    } else {
-        out.print("Nessuna categoria disponibile");
-    }
-%>
-</p>
 
 
 
@@ -85,20 +99,22 @@
 
         
 <div class="gestione-portate">
+        <h2 class="text">Gestione funzioni ristorante</h2>
+
     <div class="intestazione-portate">
-        <h2>Categorie</h2>
-        <a href="<%=request.getContextPath()%>/AggiungiPortataServlet" class="btn-aggiungi-portata">
+        <a href="<%=request.getContextPath()%>/AggiungiPortataServlet" class="btn-sezione">
             + Aggiungi Portata
         </a>
-        <a href="<%=request.getContextPath() %>/AggiungiCategoriaServlet" class="btn-categorie">
+        <a href="<%=request.getContextPath() %>/AggiungiCategoriaServlet" class="btn-sezione">
             + Aggiungi Categorie
         </a>
-        <a href="<%= request.getContextPath() %>/GestioneOrdiniServlet" class="btn-gestione-ordini">Gestisci Ordini</a>
+        <a href="<%= request.getContextPath() %>/GestioneOrdiniServlet" class="btn-sezione">Gestisci Ordini</a>
         
     </div>
 
-
-
+	<h2 class="text">Lista portate</h2>
+	
+	
     <div class="lista-portate">
         <jsp:include page="listaPortateRistoratore.jsp" />
     </div>

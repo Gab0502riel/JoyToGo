@@ -21,7 +21,7 @@ public class OrdineEffettuatoServlet extends HttpServlet {
         if (ordine == null) {
             request.setAttribute("erroreOrdine", true);
         } else {
-            request.setAttribute("ordine", ordine);  // 🔴 FONDAMENTALE: PASSAGGIO ALLA JSP
+            request.setAttribute("ordine", ordine); 
         }
 
         request.getRequestDispatcher("/WEB-INF/jsp_private/OrdineEffettuato.jsp").forward(request, response);
