@@ -27,7 +27,7 @@
     
         <video autoplay muted loop playsinline class="main_video_bg">
           <source
-                src="<%=request.getContextPath()%>/risorse/res/Pasta.mp4"
+                src="<%=request.getContextPath()%>/risorse/res/Pasta.mov"
                 type="video/mp4">
         </video>
         
