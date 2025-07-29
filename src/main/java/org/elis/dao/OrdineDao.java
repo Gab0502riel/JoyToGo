@@ -10,6 +10,9 @@ public interface OrdineDao extends GeneralDao<Ordine>{
 	List<Ordine> findByRistoranteAndStato(long idRistorante, StatoOrdine confermato);
 
 	List<Ordine> findByRistorante(long idRistorante);
+	
+	List<Ordine> findByUtente(long idUtente);
+
 
 	boolean cambiaStato(long idOrdine, StatoOrdine nuovoStato);
 

@@ -42,6 +42,9 @@ public class LoginRistoratoreServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("utente", utente);
                     session.setAttribute("ruolo", ruolo);
+                    
+                    session.setAttribute("ristoratoreLog", utente.getRistorante());
+
 
                     response.sendRedirect(request.getContextPath() + "/HomepageRistoratoreServlet");
 

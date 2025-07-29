@@ -31,6 +31,11 @@
 					<a href="<%=request.getContextPath()%>/LogoutUtenteServlet" title="Logout" class="logout-icon">
 						<img src="<%=request.getContextPath()%>/risorse/res/icons8-logout-arrotondato-60.png" class="logout-icon">
 					</a>
+					
+					<a href="<%= request.getContextPath() %>/OrdiniUtenteServlet" class="btn-ordini-utente">
+    			I miei ordini
+				</a>
+					
             </div>
         </div>
         <div class="carousel_wrapper">

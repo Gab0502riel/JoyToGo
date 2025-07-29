@@ -16,6 +16,7 @@ import org.elis.dao.OrdineDao;
 import org.elis.model.ElementoOrdine;
 import org.elis.model.Ordine;
 import org.elis.model.Ristorante;
+import org.elis.model.StatoOrdine;
 import org.elis.model.Utente;
 
 import com.google.gson.Gson;
@@ -87,6 +88,13 @@ public class OrdineServlet extends HttpServlet {
 	    ordine.setUtente(utente);
 	    ordine.setRistorante(ristorante);
 	    ordine.setElementi(carrello);
+	    
+	    ordine.setStato(StatoOrdine.IN_ATTESA_DI_CONFERMA);
+	    
+	    for (ElementoOrdine e : carrello) {
+	        e.setOrdine(ordine); 
+	    }
+
 	    session.setAttribute("ordineEffettuato", ordine);
 	    
 	    OrdineDao oDao= DaoFactory.getDaoFactory().getOrdineDao();

@@ -34,17 +34,38 @@ public class JPAOrdineDao implements OrdineDao {
         query.setParameter("idRistorante", idRistorante);
         return query.getResultList();
     }
+    
+    @Override
+    public List<Ordine> findByUtente(long idUtente) {
+        TypedQuery<Ordine> query = em.createQuery(
+            "SELECT o FROM Ordine o WHERE o.utente.id = :idUtente ORDER BY o.dataOra DESC", Ordine.class);
+        query.setParameter("idUtente", idUtente);
+        return query.getResultList();
+    }
+
 
     @Override
     public boolean cambiaStato(long idOrdine, StatoOrdine nuovoStato) {
-        Ordine ordine = em.find(Ordine.class, idOrdine);
-        if (ordine != null) {
-            ordine.setStato(nuovoStato);
-            em.merge(ordine);
-            return true;
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            Ordine ordine = em.find(Ordine.class, idOrdine);
+            if (ordine != null) {
+                ordine.setStato(nuovoStato);
+                em.merge(ordine);
+                tx.commit();
+                return true;
+            }
+            tx.rollback();
+        } catch (Exception e) {
+            if (tx.isActive()) tx.rollback();
+            e.printStackTrace();
         }
         return false;
     }
+
+    
+    
 
 	@Override
 	public void insert(Ordine t) throws Exception {

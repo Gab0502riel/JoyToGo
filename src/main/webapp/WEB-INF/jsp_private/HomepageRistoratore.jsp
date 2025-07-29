@@ -93,6 +93,8 @@
         <a href="<%=request.getContextPath() %>/AggiungiCategoriaServlet" class="btn-categorie">
             + Aggiungi Categorie
         </a>
+        <a href="<%= request.getContextPath() %>/GestioneOrdiniServlet" class="btn-gestione-ordini">Gestisci Ordini</a>
+        
     </div>
 
 
