@@ -34,17 +34,12 @@ public class ListaPortateRistoranteServlet extends HttpServlet {
 			portate.addAll(c.getPortate());
 		}
 		
-		if(r!=null) {
-			request.setAttribute("ristoranteScelto", r);
-			request.setAttribute("categorie", categorie);
-			request.setAttribute("portate", portate);
-			request.getSession().setAttribute("ristoranteScelto", r);
-	
-			request.getRequestDispatcher("/WEB-INF/jsp_private/ListaPortateRistorante.jsp").forward(request, response);
-		}
-		else {
-			response.sendRedirect(request.getContextPath()+"/HomepageUtente?error=ristoranteNonTrovato");
-		}
+		request.setAttribute("ristoranteScelto", r);
+		request.setAttribute("categorie", categorie);
+		request.setAttribute("portate", portate);
+		request.getSession().setAttribute("ristoranteScelto", r);
+
+		request.getRequestDispatcher("/WEB-INF/jsp_private/ListaPortateRistorante.jsp").forward(request, response);
 	}
 
 	

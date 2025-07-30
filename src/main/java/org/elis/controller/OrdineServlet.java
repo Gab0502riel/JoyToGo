@@ -46,8 +46,7 @@ public class OrdineServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.sendRedirect(request.getContextPath() + "/OrdineEffettuatoServlet");
+	doPost(request, response);
 	}
 
 	/**
@@ -95,7 +94,7 @@ public class OrdineServlet extends HttpServlet {
 	        e.setOrdine(ordine); 
 	    }
 
-	    session.setAttribute("ordineEffettuato", ordine);
+	    //session.setAttribute("ordineEffettuato", ordine);
 	    
 	    OrdineDao oDao= DaoFactory.getDaoFactory().getOrdineDao();
 	    try {
@@ -105,10 +104,8 @@ public class OrdineServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	    
-	    response.sendRedirect(request.getContextPath()+"/OrdineEffettuatoServlet");
-	    
-	    
-	    response.setStatus(HttpServletResponse.SC_OK);
+
+         response.sendRedirect(request.getContextPath()+"/OrdineEffettuatoServlet?idOrdine="+ordine.getId());
 	}
 
 

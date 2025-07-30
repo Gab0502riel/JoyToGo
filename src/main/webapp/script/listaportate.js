@@ -30,7 +30,7 @@ document.querySelectorAll('.resturant_card').forEach(card => {
            link.addEventListener("click", e => {
                if (link.classList.contains("fa")) return;
 
-               e.preventDefault();
+               
                const text = link.textContent.trim();
 
                switch (text) {
@@ -172,6 +172,7 @@ document.querySelectorAll('.resturant_card').forEach(card => {
 			            cartSidebar.classList.remove("active");
 			            overlay.classList.remove("active");
 			            mainContent.classList.remove("blur");
+						window.location.href="OrdineEffettuatoServlet";
 			        } else {
 			            alert("Errore nell'invio dell'ordine.");
 			        }
@@ -202,3 +203,7 @@ document.querySelectorAll('.resturant_card').forEach(card => {
 	            mainContent.classList.remove("blur");  // <- RIMUOVI BLUR QUANDO CHIUDI SIDEBAR CLICCANDO FUORI
 
 	        });
+			
+			
+			
+			

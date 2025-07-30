@@ -1,9 +1,12 @@
+<%@page import="java.util.List"%>
 <%@page import="org.elis.model.Categoria"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ page import="org.elis.model.Utente" %>
 <%@ page import="org.elis.model.Ristorante" %>
+<%@ page import="org.elis.model.Categoria" %>
+
 <%
     Utente utente = (Utente) session.getAttribute("utente");
 	Ristorante ristorante = (utente != null) ? utente.getRistorante() : null;
@@ -21,6 +24,7 @@
 </head>
 
 <body>
+	<%List<Categoria> categorie=(List<Categoria>)request.getAttribute("categorie"); %>
     <div class="main-content">
 
         <div class="navbar">
@@ -76,26 +80,18 @@
             <%
                 if (ristorante != null && ristorante.getCategorie() != null && !ristorante.getCategorie().isEmpty()) {
                     for (Categoria cat : ristorante.getCategorie()) {
-                        out.print(cat.getNome() + " ");
+                        out.print(cat.getNome() +", ");
                     }
                 } else {
-                    out.print("Nessuna categoria disponibile");
+                    out.print("Nessuna categoria trovata");
                 }
             %>
-            </span>
-        </div>
-    </div>
+            	</span>
+        	</div>
+    	</div>
+	</div>
 </div>
 
-
-
-
-
-
-            
-        </div>
-    </div>
-</div>
 
         
 <div class="gestione-portate">
@@ -164,7 +160,6 @@
                 <div id="popup-text"></div>
             </div>
         </div>
-    </div>
 
       <!-- Sidebar Carrello -->
     <div id="cartSidebar" class="cart-sidebar">

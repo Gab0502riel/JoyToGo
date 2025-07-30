@@ -44,23 +44,33 @@
             <div class="food_container">
                 <div class="food_pic" id="carouselTrack">
                     <div class="food_box">
+                    <a href="#ristoranti">
                         <img src="<%=request.getContextPath()%>/risorse/res/Pizza_3.jpg" alt="pizza" class="food_image" />
+                    </a>    
                         <div class="food_label">Pizza</div>
                     </div>
                     <div class="food_box">
+                        <a href="#ristoranti">                   
                         <img src="<%=request.getContextPath()%>/risorse/res/panino_1.webp" alt="hamburger" class="food_image" />
+                        </a>
                         <div class="food_label">Hamburger</div>
                     </div>
                     <div class="food_box">
+                    <a href="#ristoranti">
                         <img src="<%=request.getContextPath()%>/risorse/res/sushi_2.jpg" alt="sushi" class="food_image" />
+                       </a> 
                         <div class="food_label">Sushi</div>
                     </div>
                     <div class="food_box">
+                    <a href="#ristoranti">
                         <img src="<%=request.getContextPath()%>/risorse/res/Fritti_1.jpg" alt="fritti" class="food_image" />
+                       </a> 
                         <div class="food_label">Fritti</div>
                     </div>
                     <div class="food_box">
+                    <a href="#ristoranti">
                         <img src="<%=request.getContextPath()%>/risorse/res/pasta_1.jpg" alt="italiano" class="food_image" />
+                        </a>
                         <div class="food_label">Italiano</div>
                     </div>
                 </div>
@@ -101,7 +111,7 @@
         </section>
         </div>
         
-                <div class="sezione-ristoranti">    
+                <div class="sezione-ristoranti" id="ristoranti">    
                  <%for(Ristorante r: ristoranti){ %>
             <div class="card-ristorante">
             	<% for(Utente ut : ristoratori){

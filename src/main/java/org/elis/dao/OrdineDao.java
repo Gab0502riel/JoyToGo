@@ -16,4 +16,6 @@ public interface OrdineDao extends GeneralDao<Ordine>{
 
 	boolean cambiaStato(long idOrdine, StatoOrdine nuovoStato);
 
+	Integer getLastId();
+
 }

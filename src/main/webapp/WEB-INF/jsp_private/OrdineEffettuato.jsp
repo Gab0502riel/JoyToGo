@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="org.elis.model.Utente, org.elis.model.Ristorante" %>
 <%@ page import="org.elis.model.Utente, org.elis.model.Ristorante, org.elis.model.Ordine, org.elis.model.ElementoOrdine, java.util.List" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
-
 <%
     Utente utente = (Utente) session.getAttribute("UtenteLog");
     Ristorante ristorante = (Ristorante) session.getAttribute("ristoranteScelto");
     Ordine ordine = (Ordine) request.getAttribute("ordine");
+    
+    double totale = 0;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 %>
 
@@ -21,54 +23,56 @@
 <body>
 
 <div class="container">
+
     <video autoplay muted loop playsinline class="main_video_bg">
         <source src="<%=request.getContextPath()%>/risorse/res/Pasta.mov" type="video/mp4">
     </video>
 
-    <% if (ordine == null) { %>
-        <h2>Errore nell'elaborazione dell'ordine</h2>
-        <p>Si è verificato un errore nel recupero delle informazioni sull’ordine.</p>
+    <h1>Grazie per il tuo ordine!</h1>
+    <p>Ciao <strong><%= utente.getNome() %></strong>,</p>
+    <p>il tuo ordine presso <strong><%= ristorante.getNome() %></strong> è stato ricevuto con successo.</p>
+    <p>Riceverai presto una notifica quando sarà pronto per il ritiro.</p>
+    <p>Orario ordine: <strong><%= ordine.getDataOra().format(formatter) %></strong></p>
+
+    <h2>Dettagli ordine:</h2>
+    <table>
+        <tr>
+            <th>Prodotto</th>
+            <th>Prezzo</th>
+            <th>Quantità</th>
+            <th>Subtotale</th>
+        </tr>
+        <%
+            if (ordine !=null && ordine.getElementi()!=null && !ordine.getElementi().isEmpty()) {
+                for (ElementoOrdine e : ordine.getElementi()) {
+                    double subTotale = e.getPrezzo() * e.getQuantita();
+                    totale += subTotale;
+        %>
+        <tr>
+            <td><%= e.getNome() %></td>
+            <td><%= String.format("%.2f", e.getPrezzo()) %> €</td>
+            <td><%= e.getQuantita() %></td>
+            <td><%= String.format("%.2f", subTotale) %> €</td>
+        </tr>
+        <%
+                }
+            } else {
+        %>
+        <tr>
+            <td colspan="4">Nessun ordine trovato</td>
+        </tr>
+        <%
+            }
+        %>
+        <tr style="font-weight: bold;">
+            <td colspan="3" style="text-align:right;">Totale:</td>
+            <td><%= String.format("%.2f", totale) %> €</td>
+        </tr>
+    </table>
+
+    <p style="margin-top: 30px;">
         <a href="<%= request.getContextPath() %>/HomePageUtenteServlet" class="home">Torna alla home</a>
-    <% } else { 
-        List<ElementoOrdine> elementi = ordine.getElementi();
-        double totale = 0;
-    %>
-
-        <h1>Grazie per il tuo ordine!</h1>
-        <p>Ciao <strong><%= utente != null ? utente.getNome() : "Utente" %></strong>,</p>
-        <p>il tuo ordine presso <strong><%= ristorante != null ? ristorante.getNome() : "Ristorante" %></strong> è stato ricevuto con successo.</p>
-        <p>Riceverai presto una notifica quando sarà pronto per il ritiro.</p>
-        <p>Orario ordine: <strong><%= ordine.getDataOra().format(formatter) %></strong></p>
-
-        <h2>Dettagli ordine:</h2>
-        <table>
-            <tr>
-                <th>Prodotto</th>
-                <th>Prezzo</th>
-                <th>Quantità</th>
-                <th>Subtotale</th>
-            </tr>
-            <% for (ElementoOrdine e : elementi) {
-                double subTotale = e.getPrezzo() * e.getQuantita();
-                totale += subTotale;
-            %>
-            <tr>
-                <td><%= e.getNome() %></td>
-                <td><%= String.format("%.2f", e.getPrezzo()) %> €</td>
-                <td><%= e.getQuantita() %></td>
-                <td><%= String.format("%.2f", subTotale) %> €</td>
-            </tr>
-            <% } %>
-            <tr style="font-weight: bold;">
-                <td colspan="3" style="text-align:right;">Totale:</td>
-                <td><%= String.format("%.2f", totale) %> €</td>
-            </tr>
-        </table>
-
-        <p style="margin-top: 30px;">
-            <a href="<%= request.getContextPath() %>/HomePageUtenteServlet" class="home">Torna alla home</a>
-        </p>
-    <% } %>
+    </p>
 </div>
 
 <footer class="footer">
@@ -81,6 +85,7 @@
                 <li><a href="#">FAQ</a></li>
             </ul>
         </div>
+
         <div class="footer_section">
             <h4>Legal</h4>
             <ul>
@@ -88,6 +93,7 @@
                 <li><a href="#">Privacy policy</a></li>
             </ul>
         </div>
+
         <div class="footer_section">
             <h4>Contatti</h4>
             <p>Email: info.joytogo@gmail.com</p>
@@ -111,9 +117,11 @@
     </div>
 </div>
 
-<script src="<%=request.getContextPath()%>/script/ordine.js"></script>
+<script src="<%=request.getContextPath()%>/script/ordine.js"> </script>
 
 </body>
 </html>
+
+
 
 

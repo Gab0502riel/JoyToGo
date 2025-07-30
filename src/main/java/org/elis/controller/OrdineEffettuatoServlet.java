@@ -6,6 +6,8 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
+import org.elis.dao.DaoFactory;
+import org.elis.dao.OrdineDao;
 import org.elis.model.Ordine;
 
 @WebServlet("/OrdineEffettuatoServlet")
@@ -14,17 +16,20 @@ public class OrdineEffettuatoServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession(false);
-        Ordine ordine = (session != null) ? (Ordine) session.getAttribute("ordineEffettuato") : null;
-
-        if (ordine == null) {
-            request.setAttribute("erroreOrdine", true);
-        } else {
-            request.setAttribute("ordine", ordine); 
-        }
-
-        request.getRequestDispatcher("/WEB-INF/jsp_private/OrdineEffettuato.jsp").forward(request, response);
+    	OrdineDao oDao= DaoFactory.getDaoFactory().getOrdineDao();
+    	Integer INTid = oDao.getLastId();
+    	int idInt = INTid;
+    	Long id = (long) idInt;
+    	try {
+			Ordine o = oDao.getById(id);
+			request.setAttribute("ordine", o);
+			request.getRequestDispatcher("/WEB-INF/jsp_private/OrdineEffettuato.jsp").forward(request, response);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
     }
 }
 

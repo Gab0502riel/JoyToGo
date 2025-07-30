@@ -6,7 +6,7 @@ public interface GeneralDao<T> {
 	
 	void insert(T t) throws Exception;
 	void delete(T t) throws Exception;
-	T getById(int id) throws Exception;
+	T getById(Long id) throws Exception;
 	List<T> getAll() throws Exception;
 	
 }

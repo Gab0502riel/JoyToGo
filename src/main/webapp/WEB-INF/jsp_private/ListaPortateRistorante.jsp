@@ -133,19 +133,19 @@ List<Portata> portate = (List<Portata>)request.getAttribute("portate");
                 <!-- I prodotti del carrello verranno generati dinamicamente via JS -->
             </div>
 
-            <a href="<%=request.getContextPath()%>/OrdineServlet"><button id="checkoutBtn" class="checkout-button" style="display: none;">
+            <button id="checkoutBtn" class="checkout-button" style="display: none;">
                 Completa Ordine
-            </button></a>
+            </button>
         </div>
     </div>
 
     <!-- Sfondo sfocato quando il carrello è aperto -->
     <div id="overlay" class="overlay"></div>
 
-    <script src="<%=request.getContextPath()%>/script/listaportate.js">
+    <script src="<%=request.getContextPath()%>/script/listaportate.js"></script>
+    
        
-
-    </script>
+    
 </body>
 
 </html>

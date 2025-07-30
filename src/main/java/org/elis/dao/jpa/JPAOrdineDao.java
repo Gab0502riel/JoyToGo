@@ -2,6 +2,7 @@ package org.elis.dao.jpa;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -63,8 +64,11 @@ public class JPAOrdineDao implements OrdineDao {
         }
         return false;
     }
-
-    
+    @Override
+    public Integer getLastId() {
+    	Query q = em.createQuery("Select o.id from Ordine o ORDER BY id DESC LIMIT 1");
+    	return (Integer)q.getSingleResult();
+    }
     
 
 	@Override
@@ -85,9 +89,8 @@ public class JPAOrdineDao implements OrdineDao {
 	}
 
 	@Override
-	public Ordine getById(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Ordine getById(Long id) throws Exception {
+		return em.find(Ordine.class, id);
 	}
 
 	@Override
@@ -95,4 +98,6 @@ public class JPAOrdineDao implements OrdineDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 }
