@@ -95,9 +95,9 @@
                 <p>Email: info.joytogo@gmail.com</p>
                 <p>Telefono: +39 123 456 7890</p>
                 <div class="footer_social">
-                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="https://www.facebook.com/share/1dqqsUosaG/" target="_blank" class="fa fa-facebook"></a>
                     <a href="https://www.instagram.com/joy_to.go?igsh=MXdwN211NXlhcWVrcA==" target="_blank" class="fa fa-instagram"></a>
-                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="https://x.com/JoyToG0" class="fa fa-twitter"></a>
                 </div>
             </div>
         </div>

@@ -28,13 +28,17 @@
                 <img src="<%=request.getContextPath()%>/risorse/res/Black cart_48.png" alt="carrello" class="cart-icon">
                 <img src="<%=request.getContextPath()%>/risorse/res/Default.png" alt="usericcon" class="user-icon" id="user-info-icon">
 	
+				<a href="<%= request.getContextPath() %>/OrdiniUtenteServlet" class="btn-ordini-utente" title="I tuoi ordini">
+    <i class="fas fa-receipt"></i>
+    <span class="sr-only">I tuoi ordini</span>
+</a>
+
+					
 					<a href="<%=request.getContextPath()%>/LogoutUtenteServlet" title="Logout" class="logout-icon">
 						<img src="<%=request.getContextPath()%>/risorse/res/icons8-logout-arrotondato-60.png" class="logout-icon">
 					</a>
 					
-					<a href="<%= request.getContextPath() %>/OrdiniUtenteServlet" class="btn-ordini-utente">
-    			I miei ordini
-				</a>
+					
 					
             </div>
         </div>
@@ -158,10 +162,10 @@
                     <p>Email: info.joytogo@gmail.com</p>
                     <p>Telefono: +39 123 456 7890</p>
                     <div class="footer_social">
-                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="https://www.facebook.com/share/1dqqsUosaG/" target="_blank" class="fa fa-facebook" target="_blank"></a>
                         <a href="https://www.instagram.com/joy_to.go?igsh=MXdwN211NXlhcWVrcA==" target="_blank"
                             class="fa fa-instagram"></a>
-                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="https://x.com/JoyToG0" class="fa fa-twitter"></a>
                     </div>
                 </div>
             </div>
